@@ -12,10 +12,15 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    
+    
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        UIApplication.shared.statusBarStyle = .lightContent
+        UIApplication.statusBarBackgroundColor = UIColor(red: 63/255, green: 81/255, blue: 181/255, alpha: 1.0)
+        
         return true
     }
 

@@ -10,9 +10,16 @@ import UIKit
 
 class ScanQR: UIViewController {
 
+    
+    @IBOutlet weak var lblAmount: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        let rupee = "\u{20B9}"
+        
+        lblAmount.text = rupee + " 0"
+        
         // Do any additional setup after loading the view.
     }
 

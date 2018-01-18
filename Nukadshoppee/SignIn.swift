@@ -104,7 +104,7 @@ class SignIn: UIViewController {
     
     @objc func keyboardWillShow(notification: NSNotification) {
         
-        self.view.frame.origin.y -= 270
+        //self.view.frame.origin.y -= 100
         
         /*
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
@@ -117,7 +117,7 @@ class SignIn: UIViewController {
     
     @objc func keyboardWillHide(notification: NSNotification) {
         
-        self.view.frame.origin.y += 270
+        //self.view.frame.origin.y += 100
         
         /*
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
@@ -155,6 +155,13 @@ class SignIn: UIViewController {
         
     }
     
+    @IBAction func PasswordBeginEditing(_ sender: UITextField) {
+        self.view.frame.origin.y -= 100
+    }
+    
+    @IBAction func PasswordDidEnd(_ sender: UITextField) {
+        self.view.frame.origin.y += 100
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

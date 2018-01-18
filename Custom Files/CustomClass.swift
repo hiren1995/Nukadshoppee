@@ -66,6 +66,17 @@ extension UIView {
     }
 }
 
+extension UIApplication {
+    class var statusBarBackgroundColor: UIColor? {
+        get {
+            return (shared.value(forKey: "statusBar") as? UIView)?.backgroundColor
+        } set {
+            (shared.value(forKey: "statusBar") as? UIView)?.backgroundColor = newValue
+            
+        }
+    }
+}
+
 func isValidPhoneNumber(value: String) -> Bool {
     //let PHONE_REGEX = "^\\d{3}-\\d{3}-\\d{4}$"
     
