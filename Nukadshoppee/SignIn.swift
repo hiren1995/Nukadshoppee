@@ -75,8 +75,8 @@ class SignIn: UIViewController {
         
         if Details
         {
-            let viewController = storyboard.instantiateViewController(withIdentifier: "viewController") as! ViewController
-            self.present(viewController, animated: true, completion: nil)
+            let dashboard = storyboard.instantiateViewController(withIdentifier: "dashboard") as! Dashboard
+            self.present(dashboard, animated: true, completion: nil)
         }
         else
         {

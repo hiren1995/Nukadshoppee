@@ -7,9 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D0A193A2010BDAA00157014 /* ScanQR.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0A19392010BDAA00157014 /* ScanQR.swift */; };
+		2D0A193C2010BDDF00157014 /* Offers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0A193B2010BDDF00157014 /* Offers.swift */; };
+		2D0A193E2010BDF100157014 /* Vendor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0A193D2010BDF100157014 /* Vendor.swift */; };
+		2D0A19402010BE0300157014 /* More.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0A193F2010BE0300157014 /* More.swift */; };
 		2D0E0AEC2010977300215CC8 /* ForgetPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0E0AEB2010977200215CC8 /* ForgetPassword.swift */; };
 		2D0E0AEE20109EA600215CC8 /* ForgetPasswordOTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0E0AED20109EA600215CC8 /* ForgetPasswordOTP.swift */; };
 		2D0E0AF02010A28B00215CC8 /* ResetPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0E0AEF2010A28B00215CC8 /* ResetPassword.swift */; };
+		2D0E0AF22010B8B700215CC8 /* Dashboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0E0AF12010B8B700215CC8 /* Dashboard.swift */; };
 		2D236D0D200F283600BB13A4 /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D236D0C200F283600BB13A4 /* SignUp.swift */; };
 		2D236D11200F500000BB13A4 /* OtpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D236D10200F500000BB13A4 /* OtpView.swift */; };
 		2D236D13200F621300BB13A4 /* UserDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D236D12200F621300BB13A4 /* UserDetails.swift */; };
@@ -49,9 +54,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2D0A19392010BDAA00157014 /* ScanQR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanQR.swift; sourceTree = "<group>"; };
+		2D0A193B2010BDDF00157014 /* Offers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Offers.swift; sourceTree = "<group>"; };
+		2D0A193D2010BDF100157014 /* Vendor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vendor.swift; sourceTree = "<group>"; };
+		2D0A193F2010BE0300157014 /* More.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = More.swift; sourceTree = "<group>"; };
 		2D0E0AEB2010977200215CC8 /* ForgetPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgetPassword.swift; sourceTree = "<group>"; };
 		2D0E0AED20109EA600215CC8 /* ForgetPasswordOTP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgetPasswordOTP.swift; sourceTree = "<group>"; };
 		2D0E0AEF2010A28B00215CC8 /* ResetPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPassword.swift; sourceTree = "<group>"; };
+		2D0E0AF12010B8B700215CC8 /* Dashboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dashboard.swift; sourceTree = "<group>"; };
 		2D236D0C200F283600BB13A4 /* SignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
 		2D236D10200F500000BB13A4 /* OtpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtpView.swift; sourceTree = "<group>"; };
 		2D236D12200F621300BB13A4 /* UserDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetails.swift; sourceTree = "<group>"; };
@@ -139,6 +149,11 @@
 				2D0E0AEB2010977200215CC8 /* ForgetPassword.swift */,
 				2D0E0AED20109EA600215CC8 /* ForgetPasswordOTP.swift */,
 				2D0E0AEF2010A28B00215CC8 /* ResetPassword.swift */,
+				2D0E0AF12010B8B700215CC8 /* Dashboard.swift */,
+				2D0A19392010BDAA00157014 /* ScanQR.swift */,
+				2D0A193B2010BDDF00157014 /* Offers.swift */,
+				2D0A193D2010BDF100157014 /* Vendor.swift */,
+				2D0A193F2010BE0300157014 /* More.swift */,
 				2D53518F200DF4F00049949E /* Assets.xcassets */,
 				2D535191200DF4F00049949E /* LaunchScreen.storyboard */,
 				2D535194200DF4F00049949E /* Info.plist */,
@@ -326,6 +341,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D0A193A2010BDAA00157014 /* ScanQR.swift in Sources */,
 				2D236D11200F500000BB13A4 /* OtpView.swift in Sources */,
 				2D236D13200F621300BB13A4 /* UserDetails.swift in Sources */,
 				2D53518B200DF4F00049949E /* ViewController.swift in Sources */,
@@ -333,9 +349,13 @@
 				2D5351BA200DF6660049949E /* CustomClass.swift in Sources */,
 				2D0E0AF02010A28B00215CC8 /* ResetPassword.swift in Sources */,
 				2D0E0AEE20109EA600215CC8 /* ForgetPasswordOTP.swift in Sources */,
+				2D0A19402010BE0300157014 /* More.swift in Sources */,
+				2D0A193C2010BDDF00157014 /* Offers.swift in Sources */,
 				2D0E0AEC2010977300215CC8 /* ForgetPassword.swift in Sources */,
 				2D5351C9200DFD470049949E /* SignIn.swift in Sources */,
 				2D535189200DF4F00049949E /* AppDelegate.swift in Sources */,
+				2D0A193E2010BDF100157014 /* Vendor.swift in Sources */,
+				2D0E0AF22010B8B700215CC8 /* Dashboard.swift in Sources */,
 				2D5351B8200DF5FF0049949E /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -954,6 +954,92 @@ U2lnbiBVEHA
             </objects>
             <point key="canvasLocation" x="1196" y="774.06296851574223"/>
         </scene>
+        <!--OFFER-->
+        <scene sceneID="8nR-10-XlL">
+            <objects>
+                <viewController storyboardIdentifier="offers" id="aZs-9U-RxL" customClass="Offers" customModule="Nukadshoppee" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bkA-Vb-FIB">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="84n-ch-32g"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="OFFER" image="per_blue" id="FaJ-KH-uWb"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ISy-x1-f06" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3554" y="1096"/>
+        </scene>
+        <!--VENDOR-->
+        <scene sceneID="Yjg-6b-ru5">
+            <objects>
+                <viewController storyboardIdentifier="vendor" id="9pO-Uo-JnG" customClass="Vendor" customModule="Nukadshoppee" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="iT7-We-gAP">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="x0u-eQ-Ft3"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="VENDOR" image="avatar_blue" id="H0m-VX-ZgS"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Iqi-u1-B3K" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2878" y="1591"/>
+        </scene>
+        <!--MORE-->
+        <scene sceneID="uJQ-Jg-gLe">
+            <objects>
+                <viewController storyboardIdentifier="more" id="bP3-tC-cAW" customClass="More" customModule="Nukadshoppee" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="GdN-cW-pov">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="937-sj-PKu"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="MORE" image="setting_blue" id="kUF-VL-q07"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KPS-f8-Mrf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1930" y="1591"/>
+        </scene>
+        <!--SCAN QR-->
+        <scene sceneID="fTa-tY-tfj">
+            <objects>
+                <viewController storyboardIdentifier="scanQR" id="GHb-gM-CXQ" customClass="ScanQR" customModule="Nukadshoppee" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="07x-NH-VVW">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="E1p-XV-rH8"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="SCAN QR" image="qr_blue" id="bhS-hd-Ht2"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gGz-dw-lGH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3553" y="376"/>
+        </scene>
+        <!--Dashboard-->
+        <scene sceneID="ca9-Rn-UuM">
+            <objects>
+                <tabBarController storyboardIdentifier="dashboard" id="4zg-uy-Poa" customClass="Dashboard" customModule="Nukadshoppee" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="E4S-20-M4C">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" red="0.8880869289340102" green="0.8880869289340102" blue="0.8880869289340102" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="selectedImageTintColor" red="0.1333333333" green="0.18823529410000001" blue="0.56470588239999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="GHb-gM-CXQ" kind="relationship" relationship="viewControllers" id="kDI-Xf-6yf"/>
+                        <segue destination="aZs-9U-RxL" kind="relationship" relationship="viewControllers" id="Wth-zP-yhe"/>
+                        <segue destination="9pO-Uo-JnG" kind="relationship" relationship="viewControllers" id="iWR-1h-Z9T"/>
+                        <segue destination="bP3-tC-cAW" kind="relationship" relationship="viewControllers" id="1Fy-ir-XWi"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wZc-eG-RzL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2313" y="817"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -1253,10 +1339,14 @@ U2lnbiBVEHA
         </scene>
     </scenes>
     <resources>
+        <image name="avatar_blue" width="27" height="29"/>
         <image name="close" width="21" height="21"/>
         <image name="icon_right_arrow" width="33" height="33"/>
         <image name="logo_temp" width="60" height="60"/>
         <image name="ns_bg" width="414" height="349"/>
+        <image name="per_blue" width="29" height="29"/>
+        <image name="qr_blue" width="29" height="29"/>
         <image name="radio-on" width="21" height="21"/>
+        <image name="setting_blue" width="7" height="28"/>
     </resources>
 </document>
