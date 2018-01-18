@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D0E0AEC2010977300215CC8 /* ForgetPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0E0AEB2010977200215CC8 /* ForgetPassword.swift */; };
+		2D0E0AEE20109EA600215CC8 /* ForgetPasswordOTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0E0AED20109EA600215CC8 /* ForgetPasswordOTP.swift */; };
+		2D0E0AF02010A28B00215CC8 /* ResetPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0E0AEF2010A28B00215CC8 /* ResetPassword.swift */; };
+		2D236D0D200F283600BB13A4 /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D236D0C200F283600BB13A4 /* SignUp.swift */; };
+		2D236D11200F500000BB13A4 /* OtpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D236D10200F500000BB13A4 /* OtpView.swift */; };
+		2D236D13200F621300BB13A4 /* UserDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D236D12200F621300BB13A4 /* UserDetails.swift */; };
 		2D535189200DF4F00049949E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D535188200DF4F00049949E /* AppDelegate.swift */; };
 		2D53518B200DF4F00049949E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D53518A200DF4F00049949E /* ViewController.swift */; };
 		2D53518E200DF4F00049949E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D53518C200DF4F00049949E /* Main.storyboard */; };
@@ -14,6 +20,15 @@
 		2D535193200DF4F00049949E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D535191200DF4F00049949E /* LaunchScreen.storyboard */; };
 		2D53519E200DF4F00049949E /* NukadshoppeeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D53519D200DF4F00049949E /* NukadshoppeeTests.swift */; };
 		2D5351A9200DF4F00049949E /* NukadshoppeeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5351A8200DF4F00049949E /* NukadshoppeeUITests.swift */; };
+		2D5351B8200DF5FF0049949E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5351B7200DF5FF0049949E /* Constants.swift */; };
+		2D5351BA200DF6660049949E /* CustomClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5351B9200DF6660049949E /* CustomClass.swift */; };
+		2D5351C2200DF7530049949E /* HaloHandletter.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2D5351BE200DF73E0049949E /* HaloHandletter.ttf */; };
+		2D5351C3200DF7530049949E /* SourceSansPro_Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2D5351BC200DF73D0049949E /* SourceSansPro_Black.ttf */; };
+		2D5351C4200DF7530049949E /* SourceSansPro_Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2D5351C1200DF73E0049949E /* SourceSansPro_Bold.ttf */; };
+		2D5351C5200DF7530049949E /* SourceSansPro_Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2D5351BD200DF73E0049949E /* SourceSansPro_Light.ttf */; };
+		2D5351C6200DF7530049949E /* SourceSansPro_Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2D5351BF200DF73E0049949E /* SourceSansPro_Regular.ttf */; };
+		2D5351C7200DF7530049949E /* SourceSansPro_Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2D5351C0200DF73E0049949E /* SourceSansPro_Semibold.ttf */; };
+		2D5351C9200DFD470049949E /* SignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5351C8200DFD470049949E /* SignIn.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +49,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2D0E0AEB2010977200215CC8 /* ForgetPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgetPassword.swift; sourceTree = "<group>"; };
+		2D0E0AED20109EA600215CC8 /* ForgetPasswordOTP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgetPasswordOTP.swift; sourceTree = "<group>"; };
+		2D0E0AEF2010A28B00215CC8 /* ResetPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPassword.swift; sourceTree = "<group>"; };
+		2D236D0C200F283600BB13A4 /* SignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
+		2D236D10200F500000BB13A4 /* OtpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtpView.swift; sourceTree = "<group>"; };
+		2D236D12200F621300BB13A4 /* UserDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetails.swift; sourceTree = "<group>"; };
 		2D535185200DF4F00049949E /* Nukadshoppee.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nukadshoppee.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D535188200DF4F00049949E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2D53518A200DF4F00049949E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +68,15 @@
 		2D5351A4200DF4F00049949E /* NukadshoppeeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NukadshoppeeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D5351A8200DF4F00049949E /* NukadshoppeeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NukadshoppeeUITests.swift; sourceTree = "<group>"; };
 		2D5351AA200DF4F00049949E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2D5351B7200DF5FF0049949E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		2D5351B9200DF6660049949E /* CustomClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomClass.swift; sourceTree = "<group>"; };
+		2D5351BC200DF73D0049949E /* SourceSansPro_Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SourceSansPro_Black.ttf; sourceTree = "<group>"; };
+		2D5351BD200DF73E0049949E /* SourceSansPro_Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SourceSansPro_Light.ttf; sourceTree = "<group>"; };
+		2D5351BE200DF73E0049949E /* HaloHandletter.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HaloHandletter.ttf; sourceTree = "<group>"; };
+		2D5351BF200DF73E0049949E /* SourceSansPro_Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SourceSansPro_Regular.ttf; sourceTree = "<group>"; };
+		2D5351C0200DF73E0049949E /* SourceSansPro_Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SourceSansPro_Semibold.ttf; sourceTree = "<group>"; };
+		2D5351C1200DF73E0049949E /* SourceSansPro_Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SourceSansPro_Bold.ttf; sourceTree = "<group>"; };
+		2D5351C8200DFD470049949E /* SignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignIn.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +107,8 @@
 		2D53517C200DF4F00049949E = {
 			isa = PBXGroup;
 			children = (
+				2D5351BB200DF6DE0049949E /* Fonts */,
+				2D5351B6200DF56E0049949E /* Custom Files */,
 				2D535187200DF4F00049949E /* Nukadshoppee */,
 				2D53519C200DF4F00049949E /* NukadshoppeeTests */,
 				2D5351A7200DF4F00049949E /* NukadshoppeeUITests */,
@@ -100,6 +132,13 @@
 				2D535188200DF4F00049949E /* AppDelegate.swift */,
 				2D53518A200DF4F00049949E /* ViewController.swift */,
 				2D53518C200DF4F00049949E /* Main.storyboard */,
+				2D5351C8200DFD470049949E /* SignIn.swift */,
+				2D236D0C200F283600BB13A4 /* SignUp.swift */,
+				2D236D10200F500000BB13A4 /* OtpView.swift */,
+				2D236D12200F621300BB13A4 /* UserDetails.swift */,
+				2D0E0AEB2010977200215CC8 /* ForgetPassword.swift */,
+				2D0E0AED20109EA600215CC8 /* ForgetPasswordOTP.swift */,
+				2D0E0AEF2010A28B00215CC8 /* ResetPassword.swift */,
 				2D53518F200DF4F00049949E /* Assets.xcassets */,
 				2D535191200DF4F00049949E /* LaunchScreen.storyboard */,
 				2D535194200DF4F00049949E /* Info.plist */,
@@ -123,6 +162,28 @@
 				2D5351AA200DF4F00049949E /* Info.plist */,
 			);
 			path = NukadshoppeeUITests;
+			sourceTree = "<group>";
+		};
+		2D5351B6200DF56E0049949E /* Custom Files */ = {
+			isa = PBXGroup;
+			children = (
+				2D5351B7200DF5FF0049949E /* Constants.swift */,
+				2D5351B9200DF6660049949E /* CustomClass.swift */,
+			);
+			path = "Custom Files";
+			sourceTree = "<group>";
+		};
+		2D5351BB200DF6DE0049949E /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				2D5351BE200DF73E0049949E /* HaloHandletter.ttf */,
+				2D5351BC200DF73D0049949E /* SourceSansPro_Black.ttf */,
+				2D5351C1200DF73E0049949E /* SourceSansPro_Bold.ttf */,
+				2D5351BD200DF73E0049949E /* SourceSansPro_Light.ttf */,
+				2D5351BF200DF73E0049949E /* SourceSansPro_Regular.ttf */,
+				2D5351C0200DF73E0049949E /* SourceSansPro_Semibold.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -193,7 +254,7 @@
 				TargetAttributes = {
 					2D535184200DF4F00049949E = {
 						CreatedOnToolsVersion = 9.2;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 					2D535198200DF4F00049949E = {
 						CreatedOnToolsVersion = 9.2;
@@ -232,6 +293,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D5351C2200DF7530049949E /* HaloHandletter.ttf in Resources */,
+				2D5351C3200DF7530049949E /* SourceSansPro_Black.ttf in Resources */,
+				2D5351C4200DF7530049949E /* SourceSansPro_Bold.ttf in Resources */,
+				2D5351C5200DF7530049949E /* SourceSansPro_Light.ttf in Resources */,
+				2D5351C6200DF7530049949E /* SourceSansPro_Regular.ttf in Resources */,
+				2D5351C7200DF7530049949E /* SourceSansPro_Semibold.ttf in Resources */,
 				2D535193200DF4F00049949E /* LaunchScreen.storyboard in Resources */,
 				2D535190200DF4F00049949E /* Assets.xcassets in Resources */,
 				2D53518E200DF4F00049949E /* Main.storyboard in Resources */,
@@ -259,8 +326,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D236D11200F500000BB13A4 /* OtpView.swift in Sources */,
+				2D236D13200F621300BB13A4 /* UserDetails.swift in Sources */,
 				2D53518B200DF4F00049949E /* ViewController.swift in Sources */,
+				2D236D0D200F283600BB13A4 /* SignUp.swift in Sources */,
+				2D5351BA200DF6660049949E /* CustomClass.swift in Sources */,
+				2D0E0AF02010A28B00215CC8 /* ResetPassword.swift in Sources */,
+				2D0E0AEE20109EA600215CC8 /* ForgetPasswordOTP.swift in Sources */,
+				2D0E0AEC2010977300215CC8 /* ForgetPassword.swift in Sources */,
+				2D5351C9200DFD470049949E /* SignIn.swift in Sources */,
 				2D535189200DF4F00049949E /* AppDelegate.swift in Sources */,
+				2D5351B8200DF5FF0049949E /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -426,14 +502,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 3NWJFVU6RP;
 				INFOPLIST_FILE = Nukadshoppee/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.app.Nukadshoppee;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "4e471301-8010-4e03-8a7f-639e0a7bbef1";
+				PROVISIONING_PROFILE_SPECIFIER = Nukadshoppee_Development;
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -441,14 +520,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 3NWJFVU6RP;
 				INFOPLIST_FILE = Nukadshoppee/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.app.Nukadshoppee;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "4e471301-8010-4e03-8a7f-639e0a7bbef1";
+				PROVISIONING_PROFILE_SPECIFIER = Nukadshoppee_Development;
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
