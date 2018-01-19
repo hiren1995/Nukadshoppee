@@ -8,11 +8,28 @@
 
 import UIKit
 
-class Offers: UIViewController {
+class Offers: UIViewController,UIScrollViewDelegate {
 
+    @IBOutlet weak var ImgScrollView: UIScrollView!
+    let count = 2
+    let imgArray = ["demo1","demo2"]
+    //let imgViewArray:UIImageView = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        for i in 0...count-1
+        {
+            let imgView = UIImageView(frame: CGRect(x: self.ImgScrollView.frame.width * CGFloat(i), y: 0, width: self.ImgScrollView.frame.width, height: self.ImgScrollView.frame.height))
+            imgView.image = UIImage(named: imgArray[i])
+            
+            ImgScrollView.addSubview(imgView)
+        }
+        
+        self.ImgScrollView.contentSize = CGSize(width:self.ImgScrollView.frame.width * 4, height:self.ImgScrollView.frame.height)
+        
+        self.ImgScrollView.delegate = self
+        
         // Do any additional setup after loading the view.
     }
 

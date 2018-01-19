@@ -64,6 +64,16 @@ extension UIView {
         self.layer.shadowOpacity = opacity
         self.layer.shadowRadius = radius
     }
+    
+    func addBorderShadow()
+    {
+        self.layer.shadowOffset = CGSize.zero
+        self.layer.shadowOpacity = 0.4
+        self.layer.shadowRadius = 4.0
+        self.layer.shadowColor = UIColor.black.cgColor
+        self.layer.shadowPath = UIBezierPath(rect: self.bounds).cgPath
+        
+    }
 }
 
 extension UIApplication {

@@ -34,6 +34,8 @@
 		2D5351C6200DF7530049949E /* SourceSansPro_Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2D5351BF200DF73E0049949E /* SourceSansPro_Regular.ttf */; };
 		2D5351C7200DF7530049949E /* SourceSansPro_Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2D5351C0200DF73E0049949E /* SourceSansPro_Semibold.ttf */; };
 		2D5351C9200DFD470049949E /* SignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D5351C8200DFD470049949E /* SignIn.swift */; };
+		2D772E742011CEBE00BE2D35 /* VendorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D772E732011CEBE00BE2D35 /* VendorCell.swift */; };
+		2D772E76201202E300BE2D35 /* MoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D772E75201202E300BE2D35 /* MoreCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +89,8 @@
 		2D5351C0200DF73E0049949E /* SourceSansPro_Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SourceSansPro_Semibold.ttf; sourceTree = "<group>"; };
 		2D5351C1200DF73E0049949E /* SourceSansPro_Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SourceSansPro_Bold.ttf; sourceTree = "<group>"; };
 		2D5351C8200DFD470049949E /* SignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignIn.swift; sourceTree = "<group>"; };
+		2D772E732011CEBE00BE2D35 /* VendorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorCell.swift; sourceTree = "<group>"; };
+		2D772E75201202E300BE2D35 /* MoreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,7 +157,9 @@
 				2D0A19392010BDAA00157014 /* ScanQR.swift */,
 				2D0A193B2010BDDF00157014 /* Offers.swift */,
 				2D0A193D2010BDF100157014 /* Vendor.swift */,
+				2D772E732011CEBE00BE2D35 /* VendorCell.swift */,
 				2D0A193F2010BE0300157014 /* More.swift */,
+				2D772E75201202E300BE2D35 /* MoreCell.swift */,
 				2D53518F200DF4F00049949E /* Assets.xcassets */,
 				2D535191200DF4F00049949E /* LaunchScreen.storyboard */,
 				2D535194200DF4F00049949E /* Info.plist */,
@@ -349,6 +355,7 @@
 				2D5351BA200DF6660049949E /* CustomClass.swift in Sources */,
 				2D0E0AF02010A28B00215CC8 /* ResetPassword.swift in Sources */,
 				2D0E0AEE20109EA600215CC8 /* ForgetPasswordOTP.swift in Sources */,
+				2D772E76201202E300BE2D35 /* MoreCell.swift in Sources */,
 				2D0A19402010BE0300157014 /* More.swift in Sources */,
 				2D0A193C2010BDDF00157014 /* Offers.swift in Sources */,
 				2D0E0AEC2010977300215CC8 /* ForgetPassword.swift in Sources */,
@@ -357,6 +364,7 @@
 				2D0A193E2010BDF100157014 /* Vendor.swift in Sources */,
 				2D0E0AF22010B8B700215CC8 /* Dashboard.swift in Sources */,
 				2D5351B8200DF5FF0049949E /* Constants.swift in Sources */,
+				2D772E742011CEBE00BE2D35 /* VendorCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
