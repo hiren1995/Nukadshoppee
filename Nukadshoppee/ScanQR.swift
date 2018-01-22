@@ -23,6 +23,20 @@ class ScanQR: UIViewController {
         // Do any additional setup after loading the view.
     }
 
+    @IBAction func btnScanQR(_ sender: UIButton) {
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let qrCodeScanningLogicView = storyboard.instantiateViewController(withIdentifier: "qrCodeScanningLogicView") as! QRCodeScanningLogicView
+        self.present(qrCodeScanningLogicView, animated: true, completion: nil)
+    }
+    
+    @IBAction func btnWallet(_ sender: UIButton) {
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let wallet = storyboard.instantiateViewController(withIdentifier: "wallet") as! Wallet
+        self.present(wallet, animated: true, completion: nil)
+        
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

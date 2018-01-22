@@ -1,0 +1,6 @@
+framework module Pods_NukadshoppeeTests {
+  umbrella header "Pods-NukadshoppeeTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

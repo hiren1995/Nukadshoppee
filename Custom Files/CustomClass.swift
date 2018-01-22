@@ -74,6 +74,31 @@ extension UIView {
         self.layer.shadowPath = UIBezierPath(rect: self.bounds).cgPath
         
     }
+    
+    func roundTopCorners(radius : CGFloat)
+    {
+        let path = UIBezierPath(roundedRect:self.bounds,
+                                byRoundingCorners:[.topRight, .topLeft],
+                                cornerRadii: CGSize(width: radius, height: radius))
+        
+        let maskLayer = CAShapeLayer()
+        
+        maskLayer.path = path.cgPath
+        self.layer.mask = maskLayer
+    }
+    
+    func pushTransition(duration:CFTimeInterval) {
+        let animation:CATransition = CATransition()
+        animation.timingFunction = CAMediaTimingFunction(name:
+            kCAMediaTimingFunctionEaseInEaseOut)
+        //animation.type = kCATransitionMoveIn
+        animation.type = kCATransitionPush
+        animation.subtype = kCATransitionFromRight
+        animation.duration = duration
+        animation.repeatCount = 99
+        self.layer.add(animation, forKey: kCATransitionPush)
+    }
+   
 }
 
 extension UIApplication {

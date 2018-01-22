@@ -22,6 +22,8 @@
 	<true/>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>NSCameraUsageDescription</key>
+	<string>$(PRODUCT_NAME) wants access to Camera for Scanning the QR Code</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>HaloHandletter.ttf</string>
