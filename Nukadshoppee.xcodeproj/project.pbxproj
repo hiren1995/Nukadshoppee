@@ -15,6 +15,8 @@
 		2D0E0AEE20109EA600215CC8 /* ForgetPasswordOTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0E0AED20109EA600215CC8 /* ForgetPasswordOTP.swift */; };
 		2D0E0AF02010A28B00215CC8 /* ResetPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0E0AEF2010A28B00215CC8 /* ResetPassword.swift */; };
 		2D0E0AF22010B8B700215CC8 /* Dashboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0E0AF12010B8B700215CC8 /* Dashboard.swift */; };
+		2D0F86412019F1F2009D8509 /* BanksList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0F86402019F1F1009D8509 /* BanksList.swift */; };
+		2D0F86432019F9BE009D8509 /* BankCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0F86422019F9BE009D8509 /* BankCell.swift */; };
 		2D236D0D200F283600BB13A4 /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D236D0C200F283600BB13A4 /* SignUp.swift */; };
 		2D236D11200F500000BB13A4 /* OtpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D236D10200F500000BB13A4 /* OtpView.swift */; };
 		2D236D13200F621300BB13A4 /* UserDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D236D12200F621300BB13A4 /* UserDetails.swift */; };
@@ -86,6 +88,8 @@
 		2D0E0AED20109EA600215CC8 /* ForgetPasswordOTP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgetPasswordOTP.swift; sourceTree = "<group>"; };
 		2D0E0AEF2010A28B00215CC8 /* ResetPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPassword.swift; sourceTree = "<group>"; };
 		2D0E0AF12010B8B700215CC8 /* Dashboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dashboard.swift; sourceTree = "<group>"; };
+		2D0F86402019F1F1009D8509 /* BanksList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BanksList.swift; sourceTree = "<group>"; };
+		2D0F86422019F9BE009D8509 /* BankCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankCell.swift; sourceTree = "<group>"; };
 		2D236D0C200F283600BB13A4 /* SignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
 		2D236D10200F500000BB13A4 /* OtpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtpView.swift; sourceTree = "<group>"; };
 		2D236D12200F621300BB13A4 /* UserDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetails.swift; sourceTree = "<group>"; };
@@ -220,6 +224,8 @@
 				2D54D87020134B880045B07D /* WithdrawalView.swift */,
 				2D98F7E02015BA6B0039506C /* WithdrawalCell.swift */,
 				2DAB8A4E2018A49D00EF4675 /* WithdrawalAmount.swift */,
+				2D0F86402019F1F1009D8509 /* BanksList.swift */,
+				2D0F86422019F9BE009D8509 /* BankCell.swift */,
 				2DAB8A522018A4F100EF4675 /* AmountCell.swift */,
 				2D0A193B2010BDDF00157014 /* Offers.swift */,
 				2D0A193D2010BDF100157014 /* Vendor.swift */,
@@ -602,6 +608,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2DBC814C20131CA700197319 /* Wallet.swift in Sources */,
+				2D0F86412019F1F2009D8509 /* BanksList.swift in Sources */,
 				2D0A193A2010BDAA00157014 /* ScanQR.swift in Sources */,
 				2D9B3417201707B3007CEE56 /* VendorDetails.swift in Sources */,
 				2D236D11200F500000BB13A4 /* OtpView.swift in Sources */,
@@ -615,6 +622,7 @@
 				2D5351BA200DF6660049949E /* CustomClass.swift in Sources */,
 				2D54D86B20134B3B0045B07D /* PendingView.swift in Sources */,
 				2D0E0AF02010A28B00215CC8 /* ResetPassword.swift in Sources */,
+				2D0F86432019F9BE009D8509 /* BankCell.swift in Sources */,
 				2D54D87120134B880045B07D /* WithdrawalView.swift in Sources */,
 				2D0E0AEE20109EA600215CC8 /* ForgetPasswordOTP.swift in Sources */,
 				2D772E76201202E300BE2D35 /* MoreCell.swift in Sources */,

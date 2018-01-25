@@ -95,6 +95,13 @@ class WithdrawalAmount: UIViewController,UICollectionViewDelegate,UICollectionVi
         lblGetAmount.text = String(getamount)
     }
     
+    @IBAction func btnDone(_ sender: UIButton) {
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let banksList = storyboard.instantiateViewController(withIdentifier: "banksList") as! BanksList
+        self.present(banksList, animated: true, completion: nil)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
