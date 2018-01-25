@@ -43,6 +43,20 @@ class More: UIViewController,UITableViewDelegate,UITableViewDataSource {
         return 76
     }
 
+    @IBAction func btnUpdate2(_ sender: UIButton) {
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let updateProfile = storyboard.instantiateViewController(withIdentifier: "updateProfile") as! UpdateProfile
+        self.present(updateProfile, animated: true, completion: nil)
+        
+    }
+    @IBAction func btnUpdate(_ sender: UIButton) {
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let updateProfile = storyboard.instantiateViewController(withIdentifier: "updateProfile") as! UpdateProfile
+        self.present(updateProfile, animated: true, completion: nil)
+        
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

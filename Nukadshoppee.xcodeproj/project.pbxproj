@@ -44,9 +44,13 @@
 		2D54D877201365100045B07D /* RejectedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D54D876201365100045B07D /* RejectedCell.swift */; };
 		2D772E742011CEBE00BE2D35 /* VendorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D772E732011CEBE00BE2D35 /* VendorCell.swift */; };
 		2D772E76201202E300BE2D35 /* MoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D772E75201202E300BE2D35 /* MoreCell.swift */; };
+		2D7ABA4A20175F5A0095A0C0 /* UpdateProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7ABA4920175F5A0095A0C0 /* UpdateProfile.swift */; };
 		2D98F7E12015BA6B0039506C /* WithdrawalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D98F7E02015BA6B0039506C /* WithdrawalCell.swift */; };
 		2D98F7E32015DD480039506C /* ClaimVendorDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D98F7E22015DD480039506C /* ClaimVendorDetail.swift */; };
 		2D98F7E52015F6A70039506C /* ClaimStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D98F7E42015F6A70039506C /* ClaimStatus.swift */; };
+		2D9B3417201707B3007CEE56 /* VendorDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9B3416201707B3007CEE56 /* VendorDetails.swift */; };
+		2DAB8A4F2018A49D00EF4675 /* WithdrawalAmount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DAB8A4E2018A49D00EF4675 /* WithdrawalAmount.swift */; };
+		2DAB8A532018A4F100EF4675 /* AmountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DAB8A522018A4F100EF4675 /* AmountCell.swift */; };
 		2DBC814A2013114B00197319 /* QRCodeScanningLogicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBC81492013114B00197319 /* QRCodeScanningLogicView.swift */; };
 		2DBC814C20131CA700197319 /* Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBC814B20131CA700197319 /* Wallet.swift */; };
 		527222616064C39D9C6721ED /* Pods_NukadshoppeeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96DDB090BC652E71D5A1458E /* Pods_NukadshoppeeTests.framework */; };
@@ -117,9 +121,13 @@
 		2D54D876201365100045B07D /* RejectedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RejectedCell.swift; sourceTree = "<group>"; };
 		2D772E732011CEBE00BE2D35 /* VendorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorCell.swift; sourceTree = "<group>"; };
 		2D772E75201202E300BE2D35 /* MoreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreCell.swift; sourceTree = "<group>"; };
+		2D7ABA4920175F5A0095A0C0 /* UpdateProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProfile.swift; sourceTree = "<group>"; };
 		2D98F7E02015BA6B0039506C /* WithdrawalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawalCell.swift; sourceTree = "<group>"; };
 		2D98F7E22015DD480039506C /* ClaimVendorDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClaimVendorDetail.swift; sourceTree = "<group>"; };
 		2D98F7E42015F6A70039506C /* ClaimStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClaimStatus.swift; sourceTree = "<group>"; };
+		2D9B3416201707B3007CEE56 /* VendorDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorDetails.swift; sourceTree = "<group>"; };
+		2DAB8A4E2018A49D00EF4675 /* WithdrawalAmount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawalAmount.swift; sourceTree = "<group>"; };
+		2DAB8A522018A4F100EF4675 /* AmountCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountCell.swift; sourceTree = "<group>"; };
 		2DBC81492013114B00197319 /* QRCodeScanningLogicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeScanningLogicView.swift; sourceTree = "<group>"; };
 		2DBC814B20131CA700197319 /* Wallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wallet.swift; sourceTree = "<group>"; };
 		3455044B5B19CD0F7D74EF1D /* Pods-NukadshoppeeUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NukadshoppeeUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NukadshoppeeUITests/Pods-NukadshoppeeUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -211,11 +219,15 @@
 				2D54D876201365100045B07D /* RejectedCell.swift */,
 				2D54D87020134B880045B07D /* WithdrawalView.swift */,
 				2D98F7E02015BA6B0039506C /* WithdrawalCell.swift */,
+				2DAB8A4E2018A49D00EF4675 /* WithdrawalAmount.swift */,
+				2DAB8A522018A4F100EF4675 /* AmountCell.swift */,
 				2D0A193B2010BDDF00157014 /* Offers.swift */,
 				2D0A193D2010BDF100157014 /* Vendor.swift */,
 				2D772E732011CEBE00BE2D35 /* VendorCell.swift */,
+				2D9B3416201707B3007CEE56 /* VendorDetails.swift */,
 				2D0A193F2010BE0300157014 /* More.swift */,
 				2D772E75201202E300BE2D35 /* MoreCell.swift */,
+				2D7ABA4920175F5A0095A0C0 /* UpdateProfile.swift */,
 				2D53518F200DF4F00049949E /* Assets.xcassets */,
 				2D535191200DF4F00049949E /* LaunchScreen.storyboard */,
 				2D535194200DF4F00049949E /* Info.plist */,
@@ -534,11 +546,13 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Nukadshoppee/Pods-Nukadshoppee-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AARatingBar/AARatingBar.framework",
 				"${BUILT_PRODUCTS_DIR}/CropViewController/CropViewController.framework",
 				"${BUILT_PRODUCTS_DIR}/PageMenu/PageMenu.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AARatingBar.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CropViewController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PageMenu.framework",
 			);
@@ -589,11 +603,13 @@
 			files = (
 				2DBC814C20131CA700197319 /* Wallet.swift in Sources */,
 				2D0A193A2010BDAA00157014 /* ScanQR.swift in Sources */,
+				2D9B3417201707B3007CEE56 /* VendorDetails.swift in Sources */,
 				2D236D11200F500000BB13A4 /* OtpView.swift in Sources */,
 				2D98F7E32015DD480039506C /* ClaimVendorDetail.swift in Sources */,
 				2DBC814A2013114B00197319 /* QRCodeScanningLogicView.swift in Sources */,
 				2D236D13200F621300BB13A4 /* UserDetails.swift in Sources */,
 				2D53518B200DF4F00049949E /* ViewController.swift in Sources */,
+				2DAB8A4F2018A49D00EF4675 /* WithdrawalAmount.swift in Sources */,
 				2D236D0D200F283600BB13A4 /* SignUp.swift in Sources */,
 				2D98F7E12015BA6B0039506C /* WithdrawalCell.swift in Sources */,
 				2D5351BA200DF6660049949E /* CustomClass.swift in Sources */,
@@ -605,8 +621,10 @@
 				2D0A19402010BE0300157014 /* More.swift in Sources */,
 				2D0A193C2010BDDF00157014 /* Offers.swift in Sources */,
 				2D54D877201365100045B07D /* RejectedCell.swift in Sources */,
+				2D7ABA4A20175F5A0095A0C0 /* UpdateProfile.swift in Sources */,
 				2D54D86F20134B640045B07D /* RejectedView.swift in Sources */,
 				2D0E0AEC2010977300215CC8 /* ForgetPassword.swift in Sources */,
+				2DAB8A532018A4F100EF4675 /* AmountCell.swift in Sources */,
 				2D5351C9200DFD470049949E /* SignIn.swift in Sources */,
 				2D54D87520135FFE0045B07D /* ApprovedCell.swift in Sources */,
 				2D535189200DF4F00049949E /* AppDelegate.swift in Sources */,

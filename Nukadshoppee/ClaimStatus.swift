@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AARatingBar
 
 class ClaimStatus: UIViewController {
 
@@ -17,6 +18,9 @@ class ClaimStatus: UIViewController {
     @IBOutlet weak var imgbg: UIImageView!
     @IBOutlet weak var lblStatus: UILabel!
     @IBOutlet weak var imgOops: UIImageView!
+    @IBOutlet weak var ratingView: UIView!
+    @IBOutlet weak var alphaView: UIView!
+    @IBOutlet weak var ratingBar: AARatingBar!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,6 +54,20 @@ class ClaimStatus: UIViewController {
         let dashboard = storyboard.instantiateViewController(withIdentifier: "dashboard") as! Dashboard
         self.present(dashboard, animated: true, completion: nil)
     }
+    
+    @IBAction func btnCancelClicked(_ sender: UIButton) {
+        
+        alphaView.isHidden = true
+        ratingView.isHidden = true
+        
+    }
+    
+    @IBAction func btnOkClicked(_ sender: UIButton) {
+        
+        alphaView.isHidden = true
+        ratingView.isHidden = true
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

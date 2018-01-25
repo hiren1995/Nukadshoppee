@@ -112,6 +112,16 @@ extension UIApplication {
     }
 }
 
+/*
+extension UICollectionView {
+    func deselectAllItems(animated animated: Bool = false) {
+        for indexPath in self.indexPathsForSelectedItems ?? [] {
+            self.deselectItem(at: indexPath, animated: animated)
+        }
+    }
+}
+*/
+
 func isValidPhoneNumber(value: String) -> Bool {
     //let PHONE_REGEX = "^\\d{3}-\\d{3}-\\d{4}$"
     

@@ -39,8 +39,14 @@ class Vendor: UIViewController,UITableViewDataSource,UITableViewDelegate {
         cell.vendorArea.text = vendorArea[indexPath.row]
         cell.vendorDealsIn.text = vendorDealsin[indexPath.row]
         cell.vendorRating.text = VendorRating[indexPath.row]
-        
+        cell.selectionStyle = .none
         return cell
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vendorDetails = storyboard.instantiateViewController(withIdentifier: "vendorDetails") as! VendorDetails
+        self.present(vendorDetails, animated: true, completion: nil)
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 160

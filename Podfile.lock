@@ -1,15 +1,18 @@
 PODS:
+  - AARatingBar (0.1.0)
   - CropViewController (2.3.6)
   - PageMenu (2.0.0)
 
 DEPENDENCIES:
+  - AARatingBar
   - CropViewController
   - PageMenu (~> 2.0.0)
 
 SPEC CHECKSUMS:
+  AARatingBar: dd2f4b489478f5206930bb5f8f67b4db476265c8
   CropViewController: e6d4bd512d15a1709e9ddf71fe7d98ffd05dda0f
   PageMenu: 9c38fd7e0d9ef4b1408320f55bb907bbc0e538dc
 
-PODFILE CHECKSUM: 4a2ee233cc74674edb2456317caa1281a7b5ea0f
+PODFILE CHECKSUM: 4a437951e406ab10144fd9c16a4e9f56b5deaa5e
 
 COCOAPODS: 1.3.1
