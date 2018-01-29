@@ -55,6 +55,7 @@
 		2DAB8A532018A4F100EF4675 /* AmountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DAB8A522018A4F100EF4675 /* AmountCell.swift */; };
 		2DBC814A2013114B00197319 /* QRCodeScanningLogicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBC81492013114B00197319 /* QRCodeScanningLogicView.swift */; };
 		2DBC814C20131CA700197319 /* Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBC814B20131CA700197319 /* Wallet.swift */; };
+		2DFF870F201C4A5A00A89DFD /* BankDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DFF870E201C4A5A00A89DFD /* BankDetails.swift */; };
 		527222616064C39D9C6721ED /* Pods_NukadshoppeeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96DDB090BC652E71D5A1458E /* Pods_NukadshoppeeTests.framework */; };
 		5BFA63BFF63F2ACAEAE735AD /* Pods_Nukadshoppee.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 579B607EDF7E37A8FAAB12F2 /* Pods_Nukadshoppee.framework */; };
 		ABD5B3DC0B48F52657F08DE6 /* Pods_NukadshoppeeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16738843B1BDF3E904AF8D84 /* Pods_NukadshoppeeUITests.framework */; };
@@ -134,6 +135,7 @@
 		2DAB8A522018A4F100EF4675 /* AmountCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountCell.swift; sourceTree = "<group>"; };
 		2DBC81492013114B00197319 /* QRCodeScanningLogicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeScanningLogicView.swift; sourceTree = "<group>"; };
 		2DBC814B20131CA700197319 /* Wallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wallet.swift; sourceTree = "<group>"; };
+		2DFF870E201C4A5A00A89DFD /* BankDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankDetails.swift; sourceTree = "<group>"; };
 		3455044B5B19CD0F7D74EF1D /* Pods-NukadshoppeeUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NukadshoppeeUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NukadshoppeeUITests/Pods-NukadshoppeeUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		46882318ADEAD54FC868F53B /* Pods-NukadshoppeeUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NukadshoppeeUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-NukadshoppeeUITests/Pods-NukadshoppeeUITests.release.xcconfig"; sourceTree = "<group>"; };
 		579B607EDF7E37A8FAAB12F2 /* Pods_Nukadshoppee.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Nukadshoppee.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -226,6 +228,7 @@
 				2DAB8A4E2018A49D00EF4675 /* WithdrawalAmount.swift */,
 				2D0F86402019F1F1009D8509 /* BanksList.swift */,
 				2D0F86422019F9BE009D8509 /* BankCell.swift */,
+				2DFF870E201C4A5A00A89DFD /* BankDetails.swift */,
 				2DAB8A522018A4F100EF4675 /* AmountCell.swift */,
 				2D0A193B2010BDDF00157014 /* Offers.swift */,
 				2D0A193D2010BDF100157014 /* Vendor.swift */,
@@ -553,14 +556,22 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Nukadshoppee/Pods-Nukadshoppee-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AARatingBar/AARatingBar.framework",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/CropViewController/CropViewController.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/PageMenu/PageMenu.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AARatingBar.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CropViewController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PageMenu.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -637,6 +648,7 @@
 				2D54D87520135FFE0045B07D /* ApprovedCell.swift in Sources */,
 				2D535189200DF4F00049949E /* AppDelegate.swift in Sources */,
 				2D98F7E52015F6A70039506C /* ClaimStatus.swift in Sources */,
+				2DFF870F201C4A5A00A89DFD /* BankDetails.swift in Sources */,
 				2D54D86D20134B500045B07D /* ApprovedView.swift in Sources */,
 				2D0A193E2010BDF100157014 /* Vendor.swift in Sources */,
 				2D54D87320135A7D0045B07D /* PendingCell.swift in Sources */,

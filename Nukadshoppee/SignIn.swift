@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
 
 class SignIn: UIViewController {
 
@@ -73,6 +75,49 @@ class SignIn: UIViewController {
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
+        
+        /*
+        let loginParameters:Parameters = ["app_user_contact_number": txtMobileNumber.text! , "app_user_password" : txtPassword.text! ,"app_user_device_id" : "1d6fe4ae37368917" , "app_user_device_token" : "feqCqFAZfpY:APA91bFUvYa2xD0dNgw-5OrdW4UoJw0i0nOdO6HSPJEwNDUeJ8jUdDF8_V1oHyiviT_HU3gec_StQvdUOBKSD_PVY0RdZYJHrzjx-EXCr5-kfKVNoesTarnB1hts06brsPFQBiPBasve"]
+        
+        
+        Alamofire.request(LoginAPI, method: .post, parameters: loginParameters, encoding: URLEncoding.default, headers: nil).responseJSON(completionHandler: { (response) in
+            if(response.result.value != nil)
+            {
+                
+                print(JSON(response.result.value))
+                
+                let tempDict = JSON(response.result.value!)
+                
+                //print(tempDict["data"]["user_id"])
+                
+                if(tempDict["success"] == "success")
+                {
+                    if Details
+                    {
+                        let dashboard = storyboard.instantiateViewController(withIdentifier: "dashboard") as! Dashboard
+                        self.present(dashboard, animated: true, completion: nil)
+                    }
+                    else
+                    {
+                        let userDetails = storyboard.instantiateViewController(withIdentifier: "userDetails") as! UserDetails
+                        self.present(userDetails, animated: true, completion: nil)
+                    }
+                }
+                else if(tempDict["status"] == "error")
+                {
+                   
+                }
+                
+            }
+            else
+            {
+                
+                self.showAlert(title: "Alert", message: "Please Check Your Internet Connection")
+            }
+        })
+        
+        */
+        
         if Details
         {
             let dashboard = storyboard.instantiateViewController(withIdentifier: "dashboard") as! Dashboard
@@ -83,7 +128,7 @@ class SignIn: UIViewController {
             let userDetails = storyboard.instantiateViewController(withIdentifier: "userDetails") as! UserDetails
             self.present(userDetails, animated: true, completion: nil)
         }
-        
+ 
         
     }
     

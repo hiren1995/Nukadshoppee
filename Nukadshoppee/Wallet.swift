@@ -38,6 +38,14 @@ class Wallet: UIViewController {
         self.present(transactionsView, animated: true, completion: nil)
     }
     
+    
+    @IBAction func btnWithdrawal(_ sender: UIButton) {
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let withdrawalAmount = storyboard.instantiateViewController(withIdentifier: "withdrawalAmount") as! WithdrawalAmount
+        self.present(withdrawalAmount, animated: true, completion: nil)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

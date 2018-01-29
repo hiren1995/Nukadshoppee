@@ -12,6 +12,11 @@ target 'Nukadshoppee' do
   pod 'PageMenu', '~> 2.0.0'
   pod 'CropViewController'
   pod 'AARatingBar'
+  pod 'Alamofire', '~> 4.4'
+  pod 'SwiftyJSON'
+  pod 'MBProgressHUD', '~> 1.0.0'
+  pod 'Kingfisher'
+  
   
 
   target 'NukadshoppeeTests' do

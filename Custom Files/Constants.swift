@@ -12,7 +12,17 @@ import UIKit
 
 var udefault = UserDefaults.standard
 
-//values for strings for user defaults
+
+//API
+
+let BaseURL = "https://bulale.in/nukadshoppee/index.php/api/"
+
+let LoginAPI = "\(BaseURL)/user/login"
+
+
+//Strings for user defaults
 
 var MobileNumber = "MobileNumber"
 var isDetails = "isDetails"
+
+

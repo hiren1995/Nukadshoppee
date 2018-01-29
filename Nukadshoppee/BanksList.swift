@@ -46,6 +46,13 @@ class BanksList: UIViewController,UITableViewDelegate,UITableViewDataSource {
         return 150
     }
 
+    @IBAction func btnAddNew(_ sender: UIButton) {
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let bankDetails = storyboard.instantiateViewController(withIdentifier: "bankDetails") as! BankDetails
+        self.present(bankDetails, animated: true, completion: nil)
+        
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
