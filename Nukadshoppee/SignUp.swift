@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
+import MBProgressHUD
 
-class SignUp: UIViewController {
+class SignUp: UIViewController,UITextFieldDelegate  {
 
     
     @IBOutlet weak var txtMobileNumber: UITextField!
@@ -19,6 +22,13 @@ class SignUp: UIViewController {
         super.viewDidLoad()
 
         addDoneButtonOnKeyboard()
+        
+        txtPassword.delegate = self
+        txtPassword.tag = 0
+        txtPassword.returnKeyType = .next
+        txtConfirmPassword.delegate = self
+        txtConfirmPassword.tag = 1
+        txtConfirmPassword.returnKeyType = .done
         
         // Do any additional setup after loading the view.
     }
@@ -63,9 +73,95 @@ class SignUp: UIViewController {
     
     func UserSignUp()
     {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let otpView = storyboard.instantiateViewController(withIdentifier: "otpView") as! OtpView
-        self.present(otpView, animated: true, completion: nil)
+        
+        let SendOTPParameters:Parameters = ["verification_contact_number": txtMobileNumber.text! , "verification_password" : txtPassword.text! ]
+        
+        let Spinner = MBProgressHUD.showAdded(to: self.view, animated: true)
+        
+        Alamofire.request(SendOTPAPI, method: .post, parameters: SendOTPParameters, encoding: URLEncoding.default, headers: nil).responseJSON(completionHandler: { (response) in
+            if(response.result.value != nil)
+            {
+                Spinner.hide(animated: true)
+                
+                print(JSON(response.result.value))
+                
+                let tempDict = JSON(response.result.value!)
+                
+                if(tempDict["status"] == "success")
+                {
+                    udefault.set(self.txtMobileNumber.text, forKey: MobileNumber)
+                    
+                    if(tempDict["staus_code"].intValue == 1)
+                    {
+                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                        let otpView = storyboard.instantiateViewController(withIdentifier: "otpView") as! OtpView
+                        self.present(otpView, animated: true, completion: nil)
+                    }
+                    else if(tempDict["staus_code"].intValue == 2)
+                    {
+                       
+                        let VerifiedAlert = UIAlertController(title: "Account Already Verified", message: "Your account is already verified with otp please fill the form for activate you account and mobile number must be same.", preferredStyle: UIAlertControllerStyle.alert)
+                        
+                        VerifiedAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action: UIAlertAction!) in
+                            
+                            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                            let userDetails = storyboard.instantiateViewController(withIdentifier: "userDetails") as! UserDetails
+                            self.present(userDetails, animated: true, completion: nil)
+                            
+                        }))
+                        
+                        VerifiedAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
+                            
+                            print("Cancelled")
+                            
+                        }))
+                        
+                        self.present(VerifiedAlert, animated: true, completion: nil)
+         
+                        
+                    }
+                    else
+                    {
+                        let OTPAlert = UIAlertController(title: "Account Already Registered", message: "Your account is already Registered. Please Verify Your Account Using the OTP sent to your Mobile Number", preferredStyle: UIAlertControllerStyle.alert)
+                        
+                        OTPAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action: UIAlertAction!) in
+                            
+                            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                            let otpView = storyboard.instantiateViewController(withIdentifier: "otpView") as! OtpView
+                            self.present(otpView, animated: true, completion: nil)
+                            
+                        }))
+                        
+                        OTPAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
+                            
+                            print("Cancelled")
+                            
+                        }))
+                        
+                        self.present(OTPAlert, animated: true, completion: nil)
+                        
+                        
+                    }
+                    
+                }
+                else if(tempDict["status"] == "failure")
+                {
+                    self.showAlert(title: "Alert", message: "Something went wrong while sending OTP")
+                }
+                
+            }
+            else
+            {
+                Spinner.hide(animated: true)
+                self.showAlert(title: "Alert", message: "Please Check Your Internet Connection")
+            }
+        })
+ 
+        
+        
+        //let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        //let otpView = storyboard.instantiateViewController(withIdentifier: "otpView") as! OtpView
+        //self.present(otpView, animated: true, completion: nil)
     }
     
     @IBAction func btnBack(_ sender: Any) {
@@ -94,6 +190,26 @@ class SignUp: UIViewController {
     }
     @objc func cancelKeyboard(){
         self.view.endEditing(true)
+        
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool
+        
+    {
+        
+        if let nextField = textField.superview?.viewWithTag(textField.tag + 1) as? UITextField {
+            
+            nextField.becomeFirstResponder()
+            
+        } else {
+            
+            textField.resignFirstResponder()
+            
+            return true;
+            
+        }
+        
+        return false
         
     }
     

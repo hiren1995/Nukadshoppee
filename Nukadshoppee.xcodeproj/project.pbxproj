@@ -47,6 +47,7 @@
 		2D772E742011CEBE00BE2D35 /* VendorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D772E732011CEBE00BE2D35 /* VendorCell.swift */; };
 		2D772E76201202E300BE2D35 /* MoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D772E75201202E300BE2D35 /* MoreCell.swift */; };
 		2D7ABA4A20175F5A0095A0C0 /* UpdateProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7ABA4920175F5A0095A0C0 /* UpdateProfile.swift */; };
+		2D92C2A02020410A0084CA6E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2D92C29F202041090084CA6E /* GoogleService-Info.plist */; };
 		2D98F7E12015BA6B0039506C /* WithdrawalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D98F7E02015BA6B0039506C /* WithdrawalCell.swift */; };
 		2D98F7E32015DD480039506C /* ClaimVendorDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D98F7E22015DD480039506C /* ClaimVendorDetail.swift */; };
 		2D98F7E52015F6A70039506C /* ClaimStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D98F7E42015F6A70039506C /* ClaimStatus.swift */; };
@@ -127,6 +128,8 @@
 		2D772E732011CEBE00BE2D35 /* VendorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorCell.swift; sourceTree = "<group>"; };
 		2D772E75201202E300BE2D35 /* MoreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreCell.swift; sourceTree = "<group>"; };
 		2D7ABA4920175F5A0095A0C0 /* UpdateProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProfile.swift; sourceTree = "<group>"; };
+		2D92C29E20203CEF0084CA6E /* Nukadshoppee.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Nukadshoppee.entitlements; sourceTree = "<group>"; };
+		2D92C29F202041090084CA6E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2D98F7E02015BA6B0039506C /* WithdrawalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawalCell.swift; sourceTree = "<group>"; };
 		2D98F7E22015DD480039506C /* ClaimVendorDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClaimVendorDetail.swift; sourceTree = "<group>"; };
 		2D98F7E42015F6A70039506C /* ClaimStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClaimStatus.swift; sourceTree = "<group>"; };
@@ -200,6 +203,7 @@
 		2D535187200DF4F00049949E /* Nukadshoppee */ = {
 			isa = PBXGroup;
 			children = (
+				2D92C29E20203CEF0084CA6E /* Nukadshoppee.entitlements */,
 				2D535188200DF4F00049949E /* AppDelegate.swift */,
 				2D53518A200DF4F00049949E /* ViewController.swift */,
 				2D53518C200DF4F00049949E /* Main.storyboard */,
@@ -240,6 +244,7 @@
 				2D53518F200DF4F00049949E /* Assets.xcassets */,
 				2D535191200DF4F00049949E /* LaunchScreen.storyboard */,
 				2D535194200DF4F00049949E /* Info.plist */,
+				2D92C29F202041090084CA6E /* GoogleService-Info.plist */,
 			);
 			path = Nukadshoppee;
 			sourceTree = "<group>";
@@ -385,6 +390,11 @@
 					2D535184200DF4F00049949E = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Manual;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					2D535198200DF4F00049949E = {
 						CreatedOnToolsVersion = 9.2;
@@ -430,6 +440,7 @@
 				2D5351C6200DF7530049949E /* SourceSansPro_Regular.ttf in Resources */,
 				2D5351C7200DF7530049949E /* SourceSansPro_Semibold.ttf in Resources */,
 				2D535193200DF4F00049949E /* LaunchScreen.storyboard in Resources */,
+				2D92C2A02020410A0084CA6E /* GoogleService-Info.plist in Resources */,
 				2D535190200DF4F00049949E /* Assets.xcassets in Resources */,
 				2D53518E200DF4F00049949E /* Main.storyboard in Resources */,
 			);
@@ -558,20 +569,28 @@
 				"${BUILT_PRODUCTS_DIR}/AARatingBar/AARatingBar.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/CropViewController/CropViewController.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/MarqueeLabel/MarqueeLabel.framework",
 				"${BUILT_PRODUCTS_DIR}/PageMenu/PageMenu.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AARatingBar.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CropViewController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MarqueeLabel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PageMenu.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -822,15 +841,16 @@
 			baseConfigurationReference = C2E8120A7230117B89A3CD44 /* Pods-Nukadshoppee.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Nukadshoppee/Nukadshoppee.entitlements;
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 3NWJFVU6RP;
 				INFOPLIST_FILE = Nukadshoppee/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.app.Nukadshoppee;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "4e471301-8010-4e03-8a7f-639e0a7bbef1";
-				PROVISIONING_PROFILE_SPECIFIER = Nukadshoppee_Development;
+				PROVISIONING_PROFILE = "72175ce2-c9c5-4d6e-b158-ae3597bd41fa";
+				PROVISIONING_PROFILE_SPECIFIER = Nukadshoppee_Development1;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -841,15 +861,16 @@
 			baseConfigurationReference = 2A5319FE05B82F1238A8CB3A /* Pods-Nukadshoppee.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Nukadshoppee/Nukadshoppee.entitlements;
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 3NWJFVU6RP;
 				INFOPLIST_FILE = Nukadshoppee/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.app.Nukadshoppee;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "4e471301-8010-4e03-8a7f-639e0a7bbef1";
-				PROVISIONING_PROFILE_SPECIFIER = Nukadshoppee_Development;
+				PROVISIONING_PROFILE = "72175ce2-c9c5-4d6e-b158-ae3597bd41fa";
+				PROVISIONING_PROFILE_SPECIFIER = Nukadshoppee_Development1;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

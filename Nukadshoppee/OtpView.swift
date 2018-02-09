@@ -7,14 +7,19 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
+import MBProgressHUD
 
-class OtpView: UIViewController {
+class OtpView: UIViewController{
 
     @IBOutlet weak var txtOTP: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        addDoneButtonOnKeyboard()
+        
         // Do any additional setup after loading the view.
     }
     @IBAction func btnNext(_ sender: Any) {
@@ -24,9 +29,47 @@ class OtpView: UIViewController {
         }
         else
         {
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let userDetails = storyboard.instantiateViewController(withIdentifier: "userDetails") as! UserDetails
-            self.present(userDetails, animated: true, completion: nil)
+            let Spinner = MBProgressHUD.showAdded(to: self.view, animated: true)
+            
+            let VerifyOTPParameters:Parameters = ["verification_contact_number": udefault.value(forKey: MobileNumber) as! String, "verification_code" : txtOTP.text! ]
+            
+            print(VerifyOTPParameters)
+            
+            Alamofire.request(VerifyOTPAPI, method: .post, parameters: VerifyOTPParameters, encoding: URLEncoding.default, headers: nil).responseJSON(completionHandler: { (response) in
+                if(response.result.value != nil)
+                {
+                    Spinner.hide(animated: true)
+                    
+                    print(JSON(response.result.value))
+                    
+                    let tempDict = JSON(response.result.value!)
+                    
+                    if(tempDict["status"] == "success")
+                    {
+                        udefault.set(tempDict["user_id"].intValue, forKey: UserId)
+             
+                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                        let userDetails = storyboard.instantiateViewController(withIdentifier: "userDetails") as! UserDetails
+                        self.present(userDetails, animated: true, completion: nil)
+                    }
+                    else if(tempDict["status"] == "failure")
+                    {
+                        self.showAlert(title: "Alert", message: "OTP not Verified")
+                    }
+                    
+                }
+                else
+                {
+                    Spinner.hide(animated: true)
+                    self.showAlert(title: "Alert", message: "Please Check Your Internet Connection")
+                }
+            })
+ 
+            
+            //let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            //let userDetails = storyboard.instantiateViewController(withIdentifier: "userDetails") as! UserDetails
+            //self.present(userDetails, animated: true, completion: nil)
+            
         }
     }
     

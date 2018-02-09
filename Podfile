@@ -16,7 +16,9 @@ target 'Nukadshoppee' do
   pod 'SwiftyJSON'
   pod 'MBProgressHUD', '~> 1.0.0'
   pod 'Kingfisher'
-  
+  pod 'Firebase/Core'
+  pod 'Firebase/Messaging'
+  pod 'MarqueeLabel'
   
 
   target 'NukadshoppeeTests' do

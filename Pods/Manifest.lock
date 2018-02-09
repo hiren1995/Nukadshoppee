@@ -2,16 +2,54 @@ PODS:
   - AARatingBar (0.1.0)
   - Alamofire (4.6.0)
   - CropViewController (2.3.6)
+  - Firebase/Core (4.8.1):
+    - FirebaseAnalytics (= 4.0.7)
+    - FirebaseCore (= 4.0.14)
+  - Firebase/Messaging (4.8.1):
+    - Firebase/Core
+    - FirebaseMessaging (= 2.0.8)
+  - FirebaseAnalytics (4.0.7):
+    - FirebaseCore (~> 4.0)
+    - FirebaseInstanceID (~> 2.0)
+    - GoogleToolboxForMac/NSData+zlib (~> 2.1)
+    - nanopb (~> 0.3)
+  - FirebaseCore (4.0.14):
+    - GoogleToolboxForMac/NSData+zlib (~> 2.1)
+  - FirebaseInstanceID (2.0.8):
+    - FirebaseCore (~> 4.0)
+  - FirebaseMessaging (2.0.8):
+    - FirebaseAnalytics (~> 4.0)
+    - FirebaseCore (~> 4.0)
+    - FirebaseInstanceID (~> 2.0)
+    - GoogleToolboxForMac/Logger (~> 2.1)
+    - Protobuf (~> 3.1)
+  - GoogleToolboxForMac/Defines (2.1.3)
+  - GoogleToolboxForMac/Logger (2.1.3):
+    - GoogleToolboxForMac/Defines (= 2.1.3)
+  - GoogleToolboxForMac/NSData+zlib (2.1.3):
+    - GoogleToolboxForMac/Defines (= 2.1.3)
   - Kingfisher (4.6.1)
+  - MarqueeLabel (3.1.4):
+    - MarqueeLabel/ObjC (= 3.1.4)
+  - MarqueeLabel/ObjC (3.1.4)
   - MBProgressHUD (1.0.0)
+  - nanopb (0.3.8):
+    - nanopb/decode (= 0.3.8)
+    - nanopb/encode (= 0.3.8)
+  - nanopb/decode (0.3.8)
+  - nanopb/encode (0.3.8)
   - PageMenu (2.0.0)
+  - Protobuf (3.5.0)
   - SwiftyJSON (4.0.0)
 
 DEPENDENCIES:
   - AARatingBar
   - Alamofire (~> 4.4)
   - CropViewController
+  - Firebase/Core
+  - Firebase/Messaging
   - Kingfisher
+  - MarqueeLabel
   - MBProgressHUD (~> 1.0.0)
   - PageMenu (~> 2.0.0)
   - SwiftyJSON
@@ -20,11 +58,20 @@ SPEC CHECKSUMS:
   AARatingBar: dd2f4b489478f5206930bb5f8f67b4db476265c8
   Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
   CropViewController: e6d4bd512d15a1709e9ddf71fe7d98ffd05dda0f
+  Firebase: 2721056b8885eef90233b03f37be64358d35d262
+  FirebaseAnalytics: 617afa8c26b57a0c3f11361b248bc9e17bfd8dfd
+  FirebaseCore: 2e0b98fb2d64ca8140136beff15772bdd14d2dd7
+  FirebaseInstanceID: 81df5805a08001e69138664bdd02c6719a9ac80f
+  FirebaseMessaging: dfdcd307c2382290a1e297a81d0f18370f5b1bcd
+  GoogleToolboxForMac: 2501e2ad72a52eb3dfe7bd9aee7dad11b858bd20
   Kingfisher: 1f9157d9c02b380cbd0b7cc890161195164eb634
+  MarqueeLabel: bf768455fe88d427f71476ebb23f9092b660f40b
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
+  nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   PageMenu: 9c38fd7e0d9ef4b1408320f55bb907bbc0e538dc
+  Protobuf: 8a9838fba8dae3389230e1b7f8c104aa32389c03
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
 
-PODFILE CHECKSUM: 98dfa2cae100f28e556a43db084e090e6dfa549b
+PODFILE CHECKSUM: f1996226dfc80243a7a08e110ca96b1070bcde67
 
 COCOAPODS: 1.3.1

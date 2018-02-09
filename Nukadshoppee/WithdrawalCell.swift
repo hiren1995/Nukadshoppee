@@ -7,11 +7,11 @@
 //
 
 import UIKit
+import MarqueeLabel
 
 class WithdrawalCell: UITableViewCell {
 
-    
-    @IBOutlet weak var lblDateOfClaim: UILabel!
+    @IBOutlet weak var lblDateOfClaim: MarqueeLabel!
     @IBOutlet weak var lblStatus: UILabel!
     @IBOutlet weak var lblReferenceId: UILabel!
     @IBOutlet weak var lblAmountValue: UILabel!

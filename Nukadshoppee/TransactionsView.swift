@@ -8,15 +8,25 @@
 
 import UIKit
 import PageMenu
+import MBProgressHUD
+import Alamofire
+import SwiftyJSON
+
 
 class TransactionsView: UIViewController {
+
+    @IBOutlet weak var lblAmount: UILabel!
 
     var pageMenu : CAPSPageMenu?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        lblAmount.text = rupee
+        loadData()
+        
         loadTabBarStrip()
+        
         // Do any additional setup after loading the view.
     }
 
@@ -62,6 +72,58 @@ class TransactionsView: UIViewController {
         
         self.dismiss(animated: true, completion: nil)
     }
+    
+    func loadData()
+    {
+        
+            let GetBalanceParameters:Parameters = ["app_user_id": udefault.value(forKey: UserId) as! Int , "app_user_token" : udefault.value(forKey: UserToken) as! String]
+            
+            //print(GetBalanceParameters)
+            
+            let Spinner = MBProgressHUD.showAdded(to: self.view, animated: true)
+            
+            Alamofire.request(GetWalletBalanceAPI, method: .post, parameters: GetBalanceParameters, encoding: URLEncoding.default, headers: nil).responseJSON(completionHandler: { (response) in
+                if(response.result.value != nil)
+                {
+                    Spinner.hide(animated: true)
+                    
+                    print(JSON(response.result.value))
+                    
+                    let tempDict = JSON(response.result.value!)
+                    
+                    if(tempDict["status"] == "success")
+                    {
+                        self.lblAmount.text = rupee + "  " + tempDict["wallet_balance"].stringValue
+                        
+                        //self.getTransactionDetails()
+                    }
+                        
+                    else
+                    {
+                        if(tempDict["status_code"].intValue == 0)
+                        {
+                            self.lblAmount.text = rupee + "  " + tempDict["wallet_balance"].stringValue
+                            //self.getTransactionDetails()
+                        }
+                        else
+                        {
+                            self.showAlert(title: "Alert", message: "Something went wrong while Getting Balance Details")
+                        }
+                        
+                    }
+                    
+                    
+                }
+                else
+                {
+                    Spinner.hide(animated: true)
+                    self.showAlert(title: "Alert", message: "Please Check Your Internet Connection")
+                }
+            })
+        
+    }
+    
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

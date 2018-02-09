@@ -9,8 +9,12 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import MBProgressHUD
 
-class SignIn: UIViewController {
+var UserData = JSON()
+var TaxData = JSON()
+
+class SignIn: UIViewController,UITextFieldDelegate {
 
     
     @IBOutlet weak var txtMobileNumber: UITextField!
@@ -21,6 +25,14 @@ class SignIn: UIViewController {
         super.viewDidLoad()
 
         addDoneButtonOnKeyboard()
+        
+        txtMobileNumber.delegate = self
+        txtMobileNumber.tag = 0
+        txtMobileNumber.returnKeyType = .next
+        txtPassword.delegate = self
+        txtPassword.tag = 1
+        txtPassword.returnKeyType = .done
+        
         
         // Do any additional setup after loading the view.
     }
@@ -71,13 +83,15 @@ class SignIn: UIViewController {
     
     func Authenticate()
     {
-        let Details = UserDefaults.standard.bool(forKey: isDetails)
+       
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
+        let Spinner = MBProgressHUD.showAdded(to: self.view, animated: true)
         
-        /*
-        let loginParameters:Parameters = ["app_user_contact_number": txtMobileNumber.text! , "app_user_password" : txtPassword.text! ,"app_user_device_id" : "1d6fe4ae37368917" , "app_user_device_token" : "feqCqFAZfpY:APA91bFUvYa2xD0dNgw-5OrdW4UoJw0i0nOdO6HSPJEwNDUeJ8jUdDF8_V1oHyiviT_HU3gec_StQvdUOBKSD_PVY0RdZYJHrzjx-EXCr5-kfKVNoesTarnB1hts06brsPFQBiPBasve"]
+        //let loginParameters:Parameters = ["app_user_contact_number": txtMobileNumber.text! , "app_user_password" : txtPassword.text! ,"app_user_device_id" : "1d6fe4ae37368917" , "app_user_device_token" : "feqCqFAZfpY:APA91bFUvYa2xD0dNgw-5OrdW4UoJw0i0nOdO6HSPJEwNDUeJ8jUdDF8_V1oHyiviT_HU3gec_StQvdUOBKSD_PVY0RdZYJHrzjx-EXCr5-kfKVNoesTarnB1hts06brsPFQBiPBasve"]
+        
+        let loginParameters:Parameters = ["app_user_contact_number": txtMobileNumber.text! , "app_user_password" : txtPassword.text! ,"app_user_device_id" : udefault.value(forKey: DeviceId) , "app_user_device_token" : udefault.value(forKey:  DeviceToken)]
         
         
         Alamofire.request(LoginAPI, method: .post, parameters: loginParameters, encoding: URLEncoding.default, headers: nil).responseJSON(completionHandler: { (response) in
@@ -88,36 +102,123 @@ class SignIn: UIViewController {
                 
                 let tempDict = JSON(response.result.value!)
                 
-                //print(tempDict["data"]["user_id"])
+                if(tempDict["status_code"].intValue == 1)
+                {
+                    
+                    Spinner.hide(animated: true)
+                    
+                    udefault.set(true, forKey: isLogin)
+                    udefault.set(self.txtMobileNumber.text!, forKey: LoginMobile)
+                    udefault.set(self.txtPassword.text!, forKey: LoginPassword)
                 
-                if(tempDict["success"] == "success")
-                {
-                    if Details
-                    {
-                        let dashboard = storyboard.instantiateViewController(withIdentifier: "dashboard") as! Dashboard
-                        self.present(dashboard, animated: true, completion: nil)
-                    }
-                    else
-                    {
-                        let userDetails = storyboard.instantiateViewController(withIdentifier: "userDetails") as! UserDetails
-                        self.present(userDetails, animated: true, completion: nil)
-                    }
+                    UserData = tempDict["user_info"][0]
+                    TaxData = tempDict["tax_info"][0]
+                    udefault.set(UserData["app_user_token"].stringValue, forKey: UserToken)
+                    udefault.set(UserData["app_user_id"].intValue, forKey: UserId)
+                    
+                    //print(UserData)
+                    //print(TaxData)
+                    
+                    /*
+                     
+                    var userData = NSDictionary() //put this above class as global variable
+                     
+                    Derive data from userData NSDictionary in this way to set in update profile page..
+                    
+                    userData = response.result.value as! NSDictionary
+                    print(userData)
+                    print(JSON(userData["tax_info"]))
+                    print(JSON(userData["user_info"]))
+                    let x = JSON(userData["tax_info"])
+                    print(x[0]["terms_condition"])
+                    let y = JSON(userData["user_info"])
+                    print(y[0]["app_user_address"])
+                    */
+                    
+                    let dashboard = storyboard.instantiateViewController(withIdentifier: "dashboard") as! Dashboard
+                    self.present(dashboard, animated: true, completion: nil)
                 }
-                else if(tempDict["status"] == "error")
+                else if(tempDict["status_code"].intValue == 2)
                 {
+                    Spinner.hide(animated: true)
+                    udefault.set(tempDict["user_info"].intValue, forKey: UserId)
+                    let userDetails = storyboard.instantiateViewController(withIdentifier: "userDetails") as! UserDetails
+                    self.present(userDetails, animated: true, completion: nil)
+                }
+                else if(tempDict["status_code"].intValue == 4)
+                {
+                    
+                    let VerifyAlert = UIAlertController(title: "Verify Mobile Number", message: "OTP has been sent to you Please Verify Mobile Number", preferredStyle: UIAlertControllerStyle.alert)
+                    
+                    VerifyAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action: UIAlertAction!) in
+                        
+                        let SendOTPParameters:Parameters = ["verification_contact_number": self.txtMobileNumber.text! , "verification_password" : self.txtPassword.text! ]
+                        
+                        Alamofire.request(SendOTPAPI, method: .post, parameters: SendOTPParameters, encoding: URLEncoding.default, headers: nil).responseJSON(completionHandler: { (response) in
+                            if(response.result.value != nil)
+                            {
+                                Spinner.hide(animated: true)
+                                
+                                print(JSON(response.result.value))
+                                
+                                let tempDictOTP = JSON(response.result.value!)
+                                
+                                if(tempDictOTP["success"] == "success")
+                                {
+                                    
+                                    udefault.set(self.txtMobileNumber.text, forKey: MobileNumber)
+                                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                                    let otpView = storyboard.instantiateViewController(withIdentifier: "otpView") as! OtpView
+                                    self.present(otpView, animated: true, completion: nil)
+                                }
+                                else if(tempDictOTP["status"] == "failure")
+                                {
+                                    
+                                    self.showAlert(title: "Alert", message: "Something went wrong while sending OTP")
+                                }
+                                
+                            }
+                            else
+                            {
+                                
+                                self.showAlert(title: "Alert", message: "Please Check Your Internet Connection")
+                            }
+                        })
+                        
+                        
+                    }))
+                    
+                    VerifyAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
+                        
+                        print("Cancelled")
+                        
+                    }))
                    
+                    self.present(VerifyAlert, animated: true, completion: nil)
+                    
+                }
+                else if(tempDict["status_code"].intValue == 3)
+                {
+                    Spinner.hide(animated: true)
+                    self.showAlert(title: "Verify Email", message: "You are registered User but Your Email is not Verified Please Verify that first")
+                }
+                else
+                {
+                    Spinner.hide(animated: true)
+                    self.showAlert(title: "InVaild User", message: "Invalid Login Details")
                 }
                 
             }
             else
             {
-                
+                Spinner.hide(animated: true)
                 self.showAlert(title: "Alert", message: "Please Check Your Internet Connection")
             }
         })
-        
-        */
-        
+ 
+ 
+        /*
+          //let Details = UserDefaults.standard.bool(forKey: isDetails)
         if Details
         {
             let dashboard = storyboard.instantiateViewController(withIdentifier: "dashboard") as! Dashboard
@@ -128,53 +229,11 @@ class SignIn: UIViewController {
             let userDetails = storyboard.instantiateViewController(withIdentifier: "userDetails") as! UserDetails
             self.present(userDetails, animated: true, completion: nil)
         }
+         */
  
         
     }
     
-    //---------------------------------- Code for adjusting view depending upon the keyboard open and close...------------------------------------------------------------------
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        NotificationCenter.default.removeObserver(self)
-    }
-    
-    @objc func keyboardWillShow(notification: NSNotification) {
-        
-        //self.view.frame.origin.y -= 100
-        
-        /*
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-         
-            self.view.frame.origin.y -= keyboardSize.height
-            print(keyboardSize.height)
-        }
-        */
-    }
-    
-    @objc func keyboardWillHide(notification: NSNotification) {
-        
-        //self.view.frame.origin.y += 100
-        
-        /*
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-         
-            self.view.frame.origin.y += keyboardSize.height
-         
-        }
-        */
-        
-    }
-    
-    //-------------------------------------------------------- End -----------------------------------------------------------------------------------------
     
     func addDoneButtonOnKeyboard()
     {
@@ -206,6 +265,26 @@ class SignIn: UIViewController {
     
     @IBAction func PasswordDidEnd(_ sender: UITextField) {
         self.view.frame.origin.y += 100
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool
+        
+    {
+        
+        if let nextField = textField.superview?.viewWithTag(textField.tag + 1) as? UITextField {
+            
+            nextField.becomeFirstResponder()
+            
+        } else {
+            
+            textField.resignFirstResponder()
+            
+            return true;
+            
+        }
+        
+        return false
+        
     }
     
     override func didReceiveMemoryWarning() {

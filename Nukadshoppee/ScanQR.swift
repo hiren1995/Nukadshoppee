@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
+import MBProgressHUD
 
 class ScanQR: UIViewController {
 
@@ -16,11 +19,13 @@ class ScanQR: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let rupee = "\u{20B9}"
+        lblAmount.text = rupee
         
-        lblAmount.text = rupee + " 0"
         
         // Do any additional setup after loading the view.
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        loadData()
     }
 
     @IBAction func btnScanQR(_ sender: UIButton) {
@@ -42,6 +47,61 @@ class ScanQR: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func loadData()
+    {
+        if(udefault.value(forKey: UserId) != nil && udefault.value(forKey: UserToken) != nil)
+        {
+            let GetBalanceParameters:Parameters = ["app_user_id": udefault.value(forKey: UserId) as! Int , "app_user_token" : udefault.value(forKey: UserToken) as! String]
+            
+            print(GetBalanceParameters)
+            
+            let Spinner = MBProgressHUD.showAdded(to: self.view, animated: true)
+            
+            Alamofire.request(GetWalletBalanceAPI, method: .post, parameters: GetBalanceParameters, encoding: URLEncoding.default, headers: nil).responseJSON(completionHandler: { (response) in
+                if(response.result.value != nil)
+                {
+                    Spinner.hide(animated: true)
+                    
+                    print(JSON(response.result.value))
+                    
+                    let tempDict = JSON(response.result.value!)
+                    
+                    if(tempDict["status"] == "success")
+                    {
+                        self.lblAmount.text = rupee + "  " + tempDict["wallet_balance"].stringValue
+                    }
+                        
+                    else
+                    {
+                        if(tempDict["status_code"].intValue == 0)
+                        {
+                            self.lblAmount.text = rupee + "  " + tempDict["wallet_balance"].stringValue
+                        }
+                        else
+                        {
+                            self.showAlert(title: "Alert", message: "Something went wrong while Getting Balance Details")
+                        }
+                        
+                    }
+                    
+                }
+                else
+                {
+                    Spinner.hide(animated: true)
+                    self.showAlert(title: "Alert", message: "Please Check Your Internet Connection")
+                }
+            })
+            
+        }
+        else
+        {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let signIn = storyboard.instantiateViewController(withIdentifier: "signIn") as! SignIn
+            self.present(signIn, animated: true, completion: nil)
+        }
+        
+        
+    }
 
     /*
     // MARK: - Navigation

@@ -137,3 +137,16 @@ func isValidEmail(testStr:String) -> Bool {
     let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
     return emailTest.evaluate(with: testStr)
 }
+func StringToDateAndString(dateStr:String) -> String
+{
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+    let temp = dateFormatter.date(from: dateStr)!
+    
+    let normalDateFormatter = DateFormatter()
+    normalDateFormatter.dateStyle = .long
+    normalDateFormatter.timeStyle = .medium
+    
+    return normalDateFormatter.string(from: temp)
+}
+
