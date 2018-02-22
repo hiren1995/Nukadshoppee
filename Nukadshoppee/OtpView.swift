@@ -15,9 +15,12 @@ class OtpView: UIViewController{
 
     @IBOutlet weak var txtOTP: UITextField!
     
+    @IBOutlet weak var lblMobileNum: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        lblMobileNum.text = udefault.value(forKey: MobileNumber) as! String
+        
         addDoneButtonOnKeyboard()
         
         // Do any additional setup after loading the view.

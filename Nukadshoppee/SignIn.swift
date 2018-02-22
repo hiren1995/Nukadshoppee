@@ -174,7 +174,7 @@ class SignIn: UIViewController,UITextFieldDelegate {
                                 
                                 let tempDictOTP = JSON(response.result.value!)
                                 
-                                if(tempDictOTP["success"] == "success")
+                                if(tempDictOTP["status"] == "success")
                                 {
                                     
                                     udefault.set(self.txtMobileNumber.text, forKey: MobileNumber)

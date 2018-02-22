@@ -168,7 +168,19 @@ class UserDetails: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource,
                 
                 if(self.ReligionDict["status"] == "success")
                 {
-                   
+                    let x:JSON = [["religion_name" : "Other" , "religion_id" : "0"]]
+                    
+                    do
+                    {
+                        //let p = try self.ReligionDict["bank_list"].merged(with: x)
+                        //print(p)
+                        
+                        self.ReligionDict["bank_list"] = try self.ReligionDict["bank_list"].merged(with: x)
+                        
+                    }catch
+                    {
+                        print(error)
+                    }
                     
                 }
                 else if(self.ReligionDict["status"] == "failure")
@@ -391,7 +403,7 @@ class UserDetails: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource,
         txtOtherReligion.inputAccessoryView = doneToolbar
         //txtState.inputAccessoryView = doneToolbar
         txtCity.inputAccessoryView = doneToolbar
-        
+        txtWhatsAppNumber.inputAccessoryView = doneToolbar
     }
     @objc func cancelKeyboard(){
         self.view.endEditing(true)
