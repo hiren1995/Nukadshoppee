@@ -7,18 +7,27 @@
 //
 
 import UIKit
+import Alamofire
+import Kingfisher
 
 class More: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
     let values = ["Promote your business with us","About us","Privacy policy","Terms & conditions","Contact us","Rate us","Logout"]
     let imgArray = ["business","about","privacy","term","contactus","rate","logout_more"]
     
+    @IBOutlet weak var lblUserNumber: UILabel!
+    @IBOutlet weak var lblUserMailId: UILabel!
+    @IBOutlet weak var lblUserName: UILabel!
     @IBOutlet weak var moreTableView: UITableView!
+    @IBOutlet weak var imgProfilePic: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         moreTableView.delegate = self
         moreTableView.dataSource = self
+        
+        loadData()
         
         // Do any additional setup after loading the view.
     }
@@ -36,6 +45,87 @@ class More: UIViewController,UITableViewDelegate,UITableViewDataSource {
         cell.imgView.image = UIImage(named: imgArray[indexPath.row])
         
         return cell
+        
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if (indexPath.row == 0)
+        {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let moreDetails = storyboard.instantiateViewController(withIdentifier: "moreDetails") as! MoreDetails
+            moreDetails.strModule = "Promote"
+            self.present(moreDetails, animated: true, completion: nil)
+        }
+        else if(indexPath.row == 1)
+        {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let moreDetails = storyboard.instantiateViewController(withIdentifier: "moreDetails") as! MoreDetails
+            moreDetails.strModule = "About"
+            self.present(moreDetails, animated: true, completion: nil)
+        }
+        else if(indexPath.row == 2)
+        {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let moreDetails = storyboard.instantiateViewController(withIdentifier: "moreDetails") as! MoreDetails
+            moreDetails.strModule = "Privacy"
+            self.present(moreDetails, animated: true, completion: nil)
+        }
+        else if(indexPath.row == 3)
+        {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let moreDetails = storyboard.instantiateViewController(withIdentifier: "moreDetails") as! MoreDetails
+            moreDetails.strModule = "Terms"
+            self.present(moreDetails, animated: true, completion: nil)
+        }
+        else if(indexPath.row == 4)
+        {
+            let email = "nukadshoppee@gmail.com"
+            if let url = URL(string: "mailto:\(email)") {
+                UIApplication.shared.open(url)
+            }
+        }
+        else if(indexPath.row == 5)
+        {
+            
+        }
+        else
+        {
+            
+            let LogoutAlert = UIAlertController(title: "Logout", message: "Are You Sure You Want To Logout.", preferredStyle: UIAlertControllerStyle.alert)
+            
+            LogoutAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
+                
+                udefault.removeObject(forKey: isLogin)
+                udefault.removeObject(forKey: MobileNumber)
+                udefault.removeObject(forKey: SignUpPassword)
+                udefault.removeObject(forKey: isDetails)
+                udefault.removeObject(forKey: UserId)
+                udefault.removeObject(forKey: UserToken)
+                udefault.removeObject(forKey: CityName)
+                udefault.removeObject(forKey: CityId)
+                udefault.removeObject(forKey: StateName)
+                udefault.removeObject(forKey: StateId)
+                udefault.removeObject(forKey: ReligionName)
+                udefault.removeObject(forKey: ReligionID)
+                udefault.removeObject(forKey: LoginMobile)
+                udefault.removeObject(forKey: LoginPassword)
+                
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let signIn = storyboard.instantiateViewController(withIdentifier: "signIn") as! SignIn
+                self.present(signIn, animated: true, completion: nil)
+                
+            }))
+            
+            LogoutAlert.addAction(UIAlertAction(title: "NO", style: .cancel, handler: { (action: UIAlertAction!) in
+                
+                print("Logout Cancelled")
+                
+            }))
+            
+            present(LogoutAlert, animated: true, completion: nil)
+            
+            
+        }
         
     }
     
@@ -57,6 +147,17 @@ class More: UIViewController,UITableViewDelegate,UITableViewDataSource {
         self.present(updateProfile, animated: true, completion: nil)
         
     }
+    
+    func loadData()
+    {
+        lblUserName.text = UserData["app_user_name"].stringValue
+        lblUserMailId.text = UserData["app_user_email"].stringValue
+        lblUserNumber.text = UserData["app_user_contact_number"].stringValue
+        
+        
+       
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

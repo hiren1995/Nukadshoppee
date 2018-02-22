@@ -109,6 +109,7 @@ class UserDetails: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource,
         
         addDoneButtonOnKeyboard()
         addDoneStatePicker()
+        addDoneReligionPicker()
         
         // Do any additional setup after loading the view.
     }
@@ -167,7 +168,7 @@ class UserDetails: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource,
                 
                 if(self.ReligionDict["status"] == "success")
                 {
-                    //self.DataPickerView.reloadAllComponents()
+                   
                     
                 }
                 else if(self.ReligionDict["status"] == "failure")
@@ -263,11 +264,6 @@ class UserDetails: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource,
             {
                 self.showAlert(title: "Alert", message: "Please Enter Valid Email Address")
             }
-            else if(txtReligion.text == "Other" && txtOtherReligion.text == "")
-            {
-                 self.showAlert(title: "Alert", message: "Please Enter Other Religion")
-            }
-            
             else
             {
             
@@ -387,7 +383,7 @@ class UserDetails: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource,
         txtDOB.inputAccessoryView = doneToolbar
         txtName.inputAccessoryView = doneToolbar
         txtEmail.inputAccessoryView = doneToolbar
-        txtReligion.inputAccessoryView = doneToolbar
+        //txtReligion.inputAccessoryView = doneToolbar
         txtAddress.inputAccessoryView = doneToolbar
         txtArea.inputAccessoryView = doneToolbar
         txtPincode.inputAccessoryView = doneToolbar
@@ -453,6 +449,80 @@ class UserDetails: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource,
         })
         
         
+    }
+    
+    func addDoneReligionPicker()
+    {
+        var doneToolbar: UIToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 320, height: 50))
+        doneToolbar.barStyle = UIBarStyle.default
+        
+        var flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
+        var done: UIBarButtonItem = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.done, target: self, action: #selector(cancelKeyboardReligion))
+        
+        var items = NSMutableArray()
+        items.add(flexSpace)
+        items.add(done)
+        
+        doneToolbar.items = items as! [UIBarButtonItem]
+        doneToolbar.sizeToFit()
+        
+        txtReligion.inputAccessoryView = doneToolbar
+    }
+    @objc func cancelKeyboardReligion(){
+        
+        self.view.endEditing(true)
+        
+        if(udefault.value(forKey: ReligionID) as! Int == 0)
+        {
+            txtOtherReligion.isHidden = false
+        }
+        else
+        {
+            txtOtherReligion.isHidden = true
+        }
+        
+    }
+    
+    @IBAction func otherReligionEntered(_ sender: UITextField) {
+        
+        if(txtOtherReligion.text == "")
+        {
+            self.showAlert(title: "Alert", message: "Please Enter Other Religion Name")
+        }
+        else
+        {
+            let addReligionParameters:Parameters = ["religion_name": txtOtherReligion.text!]
+            
+            let Spinner = MBProgressHUD.showAdded(to: self.view, animated: true)
+            
+            Alamofire.request(AddReligionAPI, method: .post, parameters: addReligionParameters, encoding: URLEncoding.default, headers: nil).responseJSON(completionHandler: { (response)in
+                if(response.result.value != nil)
+                {
+                    Spinner.hide(animated: true)
+                    
+                    print(JSON(response.result.value))
+                    
+                    let addedreligionDict = JSON(response.result.value!)
+                    
+                    if(addedreligionDict["status"] == "success")
+                    {
+                        self.txtOtherReligion.text = addedreligionDict["add_religion"][0]["religion_name"].stringValue
+                        udefault.set(addedreligionDict["add_religion"][0]["religion_id"].intValue, forKey: ReligionID)
+                        udefault.set(addedreligionDict["add_religion"][0]["religion_name"].stringValue, forKey: ReligionName)
+                    }
+                    else if(addedreligionDict["status"] == "failure")
+                    {
+                        self.showAlert(title: "Alert", message: "Something went wrong while adding religion ")
+                    }
+                    
+                }
+                else
+                {
+                    Spinner.hide(animated: true)
+                    self.showAlert(title: "Alert", message: "Please Check Your Internet Connection")
+                }
+            })
+        }
     }
     
     

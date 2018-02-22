@@ -90,6 +90,7 @@ class SignUp: UIViewController,UITextFieldDelegate  {
                 if(tempDict["status"] == "success")
                 {
                     udefault.set(self.txtMobileNumber.text, forKey: MobileNumber)
+                    udefault.set(self.txtPassword.text, forKey: SignUpPassword)
                     
                     if(tempDict["staus_code"].intValue == 1)
                     {
@@ -146,7 +147,7 @@ class SignUp: UIViewController,UITextFieldDelegate  {
                 }
                 else if(tempDict["status"] == "failure")
                 {
-                    self.showAlert(title: "Alert", message: "Something went wrong while sending OTP")
+                    self.showAlert(title: "Alert", message: "Something went wrong while Signup.")
                 }
                 
             }

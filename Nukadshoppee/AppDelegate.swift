@@ -19,8 +19,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
     var window: UIWindow?
     
-    
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
@@ -45,9 +43,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         application.registerForRemoteNotifications()
         
         FirebaseApp.configure()
-        
-        
-        
         
         return true
     }
@@ -93,7 +88,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any])
     {
-        print(userInfo)
+        print(JSON(userInfo))
         
     }
     
@@ -101,7 +96,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                      fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         
         // Print full message.
-        print(userInfo)
+        print(JSON(userInfo))
         
     }
     
@@ -187,8 +182,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                         udefault.set(UserData["app_user_token"].stringValue, forKey: UserToken)
                         udefault.set(UserData["app_user_id"].intValue, forKey: UserId)
                         
-                        print(UserData)
-                        print(TaxData)
+                        udefault.set(UserData["state_id"].intValue, forKey: StateId)
+                        udefault.set(UserData["state_name"].stringValue, forKey: StateName)
+                        
+                        udefault.set(UserData["app_user_city"].intValue, forKey: CityId)
+                        udefault.set(UserData["city_name"].stringValue, forKey: CityName)
+                        
+                        udefault.set(UserData["app_user_religion"].intValue, forKey: ReligionID)
+                        udefault.set(UserData["religion_name"].stringValue, forKey: ReligionName)
+                        
+                        //print(UserData)
+                        //print(TaxData)
                         
                     }
                     else

@@ -13,11 +13,14 @@ import Alamofire
 import SwiftyJSON
 
 
+
 class TransactionsView: UIViewController {
 
     @IBOutlet weak var lblAmount: UILabel!
 
     var pageMenu : CAPSPageMenu?
+    
+    var TransactionPageFlag = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,14 +66,22 @@ class TransactionsView: UIViewController {
         
         pageMenu =  CAPSPageMenu(viewControllers: controllerArray, frame: CGRect(x: 0, y: 170, width: self.view.frame.width, height: self.view.frame.height-170), pageMenuOptions: parameters)
         
+        if(TransactionPageFlag == 1)
+        {
+            pageMenu?.currentPageIndex = 3
+        }
+        
         self.view.addSubview(pageMenu!.view)
         
-      
+        
 
     }
     @IBAction func btnBack(_ sender: UIButton) {
         
-        self.dismiss(animated: true, completion: nil)
+        //self.dismiss(animated: true, completion: nil)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let wallet = storyboard.instantiateViewController(withIdentifier: "wallet") as! Wallet
+        self.present(wallet, animated: true, completion: nil)
     }
     
     func loadData()
@@ -95,7 +106,6 @@ class TransactionsView: UIViewController {
                     {
                         self.lblAmount.text = rupee + "  " + tempDict["wallet_balance"].stringValue
                         
-                        //self.getTransactionDetails()
                     }
                         
                     else
@@ -103,7 +113,7 @@ class TransactionsView: UIViewController {
                         if(tempDict["status_code"].intValue == 0)
                         {
                             self.lblAmount.text = rupee + "  " + tempDict["wallet_balance"].stringValue
-                            //self.getTransactionDetails()
+                            
                         }
                         else
                         {

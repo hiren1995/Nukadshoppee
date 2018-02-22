@@ -69,12 +69,9 @@ class RejectedView: UIViewController,UITableViewDelegate,UITableViewDataSource {
         cell.lblAmtValue.text = amtVal[indexPath.row]
         */
         
-        if(DictTransaction["transaction_details"][indexPath.row]["claim_status"].intValue == 3 || DictTransaction["transaction_details"][indexPath.row]["claim_status"].intValue == 4)
-        {
             cell.lblShopName.text = tempRejected[indexPath.row]["shop_name"].stringValue
             cell.lblClaimed.text = "Claimed on :" + StringToDateAndString(dateStr: tempRejected[indexPath.row]["claim_cashback_validity"].stringValue)
             cell.lblAmtValue.text = tempRejected[indexPath.row]["amount"].stringValue
-        }
         
         return cell
     }

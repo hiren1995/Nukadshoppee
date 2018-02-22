@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
+import MBProgressHUD
 
 class ForgetPassword: UIViewController {
 
@@ -27,9 +30,35 @@ class ForgetPassword: UIViewController {
         }
         else
         {
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let forgetPasswordOTP = storyboard.instantiateViewController(withIdentifier: "forgetPasswordOTP") as! ForgetPasswordOTP
-            self.present(forgetPasswordOTP, animated: true, completion: nil)
+            let Spinner = MBProgressHUD.showAdded(to: self.view, animated: true)
+            let SendOTPParameters:Parameters = ["mobile_or_email":txtEmailorNumber.text!]
+            
+            Alamofire.request(ForgetPasswordSendOTPAPI, method: .post, parameters: SendOTPParameters, encoding: URLEncoding.default, headers: nil).responseJSON(completionHandler: { (response) in
+                if(response.result.value != nil)
+                {
+                    Spinner.hide(animated: true)
+                    
+                    print(JSON(response.result.value))
+                    
+                    let tempDict = JSON(response.result.value)
+                    
+                    if(tempDict["status"] == "success")
+                    {
+                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                        let forgetPasswordOTP = storyboard.instantiateViewController(withIdentifier: "forgetPasswordOTP") as! ForgetPasswordOTP
+                        forgetPasswordOTP.forgetPasswordNumber = self.txtEmailorNumber.text!
+                        self.present(forgetPasswordOTP, animated: true, completion: nil)
+                        
+                    }
+                    
+                }
+                else
+                {
+                    Spinner.hide(animated: true)
+                    self.showAlert(title: "Alert", message: "Please Check Your Internet Connection")
+                }
+            })
+            
         }
         
     }

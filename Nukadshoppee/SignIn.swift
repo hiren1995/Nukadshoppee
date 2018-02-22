@@ -91,7 +91,7 @@ class SignIn: UIViewController,UITextFieldDelegate {
         
         //let loginParameters:Parameters = ["app_user_contact_number": txtMobileNumber.text! , "app_user_password" : txtPassword.text! ,"app_user_device_id" : "1d6fe4ae37368917" , "app_user_device_token" : "feqCqFAZfpY:APA91bFUvYa2xD0dNgw-5OrdW4UoJw0i0nOdO6HSPJEwNDUeJ8jUdDF8_V1oHyiviT_HU3gec_StQvdUOBKSD_PVY0RdZYJHrzjx-EXCr5-kfKVNoesTarnB1hts06brsPFQBiPBasve"]
         
-        let loginParameters:Parameters = ["app_user_contact_number": txtMobileNumber.text! , "app_user_password" : txtPassword.text! ,"app_user_device_id" : udefault.value(forKey: DeviceId) , "app_user_device_token" : udefault.value(forKey:  DeviceToken)]
+        let loginParameters:Parameters = ["app_user_contact_number": txtMobileNumber.text! , "app_user_password" : txtPassword.text! ,"app_user_device_id" : udefault.value(forKey: DeviceId) as! String, "app_user_device_token" : udefault.value(forKey:  DeviceToken) as! String]
         
         
         Alamofire.request(LoginAPI, method: .post, parameters: loginParameters, encoding: URLEncoding.default, headers: nil).responseJSON(completionHandler: { (response) in
@@ -115,6 +115,15 @@ class SignIn: UIViewController,UITextFieldDelegate {
                     TaxData = tempDict["tax_info"][0]
                     udefault.set(UserData["app_user_token"].stringValue, forKey: UserToken)
                     udefault.set(UserData["app_user_id"].intValue, forKey: UserId)
+                    
+                    udefault.set(UserData["state_id"].intValue, forKey: StateId)
+                    udefault.set(UserData["state_name"].stringValue, forKey: StateName)
+                    
+                    udefault.set(UserData["app_user_city"].intValue, forKey: CityId)
+                    udefault.set(UserData["city_name"].stringValue, forKey: CityName)
+                    
+                    udefault.set(UserData["app_user_religion"].intValue, forKey: ReligionID)
+                    udefault.set(UserData["religion_name"].stringValue, forKey: ReligionName)
                     
                     //print(UserData)
                     //print(TaxData)
@@ -201,6 +210,7 @@ class SignIn: UIViewController,UITextFieldDelegate {
                 {
                     Spinner.hide(animated: true)
                     self.showAlert(title: "Verify Email", message: "You are registered User but Your Email is not Verified Please Verify that first")
+                    
                 }
                 else
                 {

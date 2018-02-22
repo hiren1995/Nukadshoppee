@@ -56,6 +56,7 @@
 		2DAB8A532018A4F100EF4675 /* AmountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DAB8A522018A4F100EF4675 /* AmountCell.swift */; };
 		2DBC814A2013114B00197319 /* QRCodeScanningLogicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBC81492013114B00197319 /* QRCodeScanningLogicView.swift */; };
 		2DBC814C20131CA700197319 /* Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBC814B20131CA700197319 /* Wallet.swift */; };
+		2DC2215E2031915500F63EE4 /* MoreDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC2215D2031915500F63EE4 /* MoreDetails.swift */; };
 		2DFF870F201C4A5A00A89DFD /* BankDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DFF870E201C4A5A00A89DFD /* BankDetails.swift */; };
 		527222616064C39D9C6721ED /* Pods_NukadshoppeeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96DDB090BC652E71D5A1458E /* Pods_NukadshoppeeTests.framework */; };
 		5BFA63BFF63F2ACAEAE735AD /* Pods_Nukadshoppee.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 579B607EDF7E37A8FAAB12F2 /* Pods_Nukadshoppee.framework */; };
@@ -138,6 +139,7 @@
 		2DAB8A522018A4F100EF4675 /* AmountCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountCell.swift; sourceTree = "<group>"; };
 		2DBC81492013114B00197319 /* QRCodeScanningLogicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeScanningLogicView.swift; sourceTree = "<group>"; };
 		2DBC814B20131CA700197319 /* Wallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wallet.swift; sourceTree = "<group>"; };
+		2DC2215D2031915500F63EE4 /* MoreDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreDetails.swift; sourceTree = "<group>"; };
 		2DFF870E201C4A5A00A89DFD /* BankDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankDetails.swift; sourceTree = "<group>"; };
 		3455044B5B19CD0F7D74EF1D /* Pods-NukadshoppeeUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NukadshoppeeUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NukadshoppeeUITests/Pods-NukadshoppeeUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		46882318ADEAD54FC868F53B /* Pods-NukadshoppeeUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NukadshoppeeUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-NukadshoppeeUITests/Pods-NukadshoppeeUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -240,6 +242,7 @@
 				2D9B3416201707B3007CEE56 /* VendorDetails.swift */,
 				2D0A193F2010BE0300157014 /* More.swift */,
 				2D772E75201202E300BE2D35 /* MoreCell.swift */,
+				2DC2215D2031915500F63EE4 /* MoreDetails.swift */,
 				2D7ABA4920175F5A0095A0C0 /* UpdateProfile.swift */,
 				2D53518F200DF4F00049949E /* Assets.xcassets */,
 				2D535191200DF4F00049949E /* LaunchScreen.storyboard */,
@@ -391,6 +394,9 @@
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 0;
+							};
 							com.apple.Push = {
 								enabled = 1;
 							};
@@ -644,6 +650,7 @@
 				2D236D11200F500000BB13A4 /* OtpView.swift in Sources */,
 				2D98F7E32015DD480039506C /* ClaimVendorDetail.swift in Sources */,
 				2DBC814A2013114B00197319 /* QRCodeScanningLogicView.swift in Sources */,
+				2DC2215E2031915500F63EE4 /* MoreDetails.swift in Sources */,
 				2D236D13200F621300BB13A4 /* UserDetails.swift in Sources */,
 				2D53518B200DF4F00049949E /* ViewController.swift in Sources */,
 				2DAB8A4F2018A49D00EF4675 /* WithdrawalAmount.swift in Sources */,

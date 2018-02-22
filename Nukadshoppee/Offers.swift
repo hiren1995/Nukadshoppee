@@ -14,6 +14,9 @@ import Kingfisher
 
 class Offers: UIViewController,UIScrollViewDelegate {
 
+    @IBOutlet weak var lblNoOffers: UILabel!
+    @IBOutlet weak var btnNext: UIButton!
+    @IBOutlet weak var btnPrevious: UIButton!
     @IBOutlet weak var ImgScrollView: UIScrollView!
     let count = 2
     //let imgArray = ["demo1","demo2"]
@@ -37,6 +40,7 @@ class Offers: UIViewController,UIScrollViewDelegate {
         self.ImgScrollView.contentSize = CGSize(width:self.ImgScrollView.frame.width * CGFloat(imgArray.count), height:self.ImgScrollView.frame.height)
         */
         
+        lblNoOffers.isHidden = true
         self.ImgScrollView.delegate = self
  
         // Do any additional setup after loading the view.
@@ -94,6 +98,13 @@ class Offers: UIViewController,UIScrollViewDelegate {
                 {
                     self.loadImages()
                 }
+                else
+                {
+                    self.showAlert(title: "NO OFFERS", message: "OOPS... No Daily Offers availible.We will update Offers Very soon.")
+                    self.lblNoOffers.isHidden = false
+                    self.btnNext.isHidden = true
+                    self.btnPrevious.isHidden = true
+                }
                 
             }
             else
@@ -120,7 +131,7 @@ class Offers: UIViewController,UIScrollViewDelegate {
             ImgScrollView.addSubview(imgView)
             
         }
-        self.ImgScrollView.contentSize = CGSize(width:self.ImgScrollView.frame.width * CGFloat(imgArray.count), height:self.ImgScrollView.frame.height)
+        self.ImgScrollView.contentSize = CGSize(width:self.ImgScrollView.frame.width * CGFloat(self.tempDict["get_daily_offers"].count), height:self.ImgScrollView.frame.height)
     }
     
     override func didReceiveMemoryWarning() {

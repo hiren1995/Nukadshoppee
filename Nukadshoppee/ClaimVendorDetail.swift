@@ -8,21 +8,31 @@
 
 import UIKit
 import CropViewController
+import Alamofire
+import MBProgressHUD
+import SwiftyJSON
+
+
 
 class ClaimVendorDetail: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate,CropViewControllerDelegate {
 
     var imagePicker = UIImagePickerController()
     var imgData = Data()
     
+    var CashBackDetails = JSON()
+    
     @IBOutlet weak var imgPicSelected: UIImageView!
     @IBOutlet weak var txtInvoiceNumber: UITextField!
     @IBOutlet weak var txtAmountValue: UITextField!
+    @IBOutlet weak var lblVendorName: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         imgPicSelected.isHidden = true
         addDoneButtonOnKeyboard()
+        
+        loadData()
         
         // Do any additional setup after loading the view.
     }
@@ -144,9 +154,58 @@ class ClaimVendorDetail: UIViewController,UIImagePickerControllerDelegate,UINavi
         }
         else
         {
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let claimStatus = storyboard.instantiateViewController(withIdentifier: "claimStatus") as! ClaimStatus
-            self.present(claimStatus, animated: true, completion: nil)
+           if(Int(txtAmountValue.text!)! < CashBackDetails["minimum_invoice"].intValue)
+           {
+                self.showAlert(title: "Alert", message: "Please Enter Amount greater than" + CashBackDetails["minimum_invoice"].stringValue)
+           }
+           else
+           {
+                    let spinnerActivity = MBProgressHUD.showAdded(to: self.view, animated: true)
+            
+                    let CashbackParameters:Parameters = ["app_user_id" : udefault.value(forKey: UserId) as! Int , "app_user_token" : udefault.value(forKey: UserToken) as! String , "offer_id" : CashBackDetails["offer_id"].intValue , "claim_amount" : txtAmountValue.text! , "invoice_number" : txtInvoiceNumber.text! ]
+            
+                    print(CashbackParameters)
+            
+                    Alamofire.upload(multipartFormData: { (multipartFormData) in
+                        
+                        for (key, value) in CashbackParameters {
+                            multipartFormData.append("\(value)".data(using: String.Encoding.utf8)!, withName: key as String)
+                        }
+                        
+                        multipartFormData.append(self.imgData, withName: "claim_cash_back_img", fileName: "image.jpg", mimeType: "image/jpg")
+                        
+                    },to: ClaimCashAPI, encodingCompletion: { (result) in
+                        
+                        switch result{
+                        case .success(let upload, _, _):
+                            upload.responseJSON { response in
+                                print("Succesfully uploaded")
+                                spinnerActivity.hide(animated: true)
+                                print(response.result.value)
+                                
+                                let tempDict = JSON(response.result.value)
+                                
+                                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                                let claimStatus = storyboard.instantiateViewController(withIdentifier: "claimStatus") as! ClaimStatus
+                                claimStatus.ClaimStatusDetails = tempDict
+                                claimStatus.shopID = self.CashBackDetails["shop_id"].intValue
+                                self.present(claimStatus, animated: true, completion: nil)
+                                
+                            }
+                        case .failure(let error):
+                            print("Error in upload: \(error.localizedDescription)")
+                            spinnerActivity.hide(animated: true)
+                            self.showAlert(title: "Alert", message: "Error in Claiming")
+                            
+                        }
+                        
+                    })
+           }
+            
+            
+            //let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            //let claimStatus = storyboard.instantiateViewController(withIdentifier: "claimStatus") as! ClaimStatus
+            //self.present(claimStatus, animated: true, completion: nil)
         }
        
     }
@@ -164,6 +223,13 @@ class ClaimVendorDetail: UIViewController,UIImagePickerControllerDelegate,UINavi
         let dashboard = storyboard.instantiateViewController(withIdentifier: "dashboard") as! Dashboard
         self.present(dashboard, animated: true, completion: nil)
     }
+    
+    func loadData()
+    {
+        lblVendorName.text =  CashBackDetails["shop_name"].stringValue
+    }
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

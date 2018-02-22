@@ -8,6 +8,9 @@
 
 import UIKit
 import AVFoundation
+import MBProgressHUD
+import Alamofire
+import SwiftyJSON
 
 class QRCodeScanningLogicView: UIViewController,AVCaptureMetadataOutputObjectsDelegate {
 
@@ -23,6 +26,8 @@ class QRCodeScanningLogicView: UIViewController,AVCaptureMetadataOutputObjectsDe
         return codeFrame
     }()
 
+    let captureSession = AVCaptureSession()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -39,7 +44,7 @@ class QRCodeScanningLogicView: UIViewController,AVCaptureMetadataOutputObjectsDe
             do {
                 let input = try AVCaptureDeviceInput(device: captureDevice)
                 
-                let captureSession = AVCaptureSession()
+                
                 captureSession.addInput(input)
                 
                 let captureMetadataOutput = AVCaptureMetadataOutput()
@@ -86,10 +91,9 @@ class QRCodeScanningLogicView: UIViewController,AVCaptureMetadataOutputObjectsDe
             guard let barcodeObject = videoPreviewLayer?.transformedMetadataObject(for: metadataObject) else { return }
             codeFrame.frame = barcodeObject.bounds
             
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let claimVendorDetail = storyboard.instantiateViewController(withIdentifier: "claimVendorDetail") as! ClaimVendorDetail
-            self.present(claimVendorDetail, animated: true, completion: nil)
+            validateQR(shopId: stringCodeValue)
             
+            self.captureSession.stopRunning()
         }
         
         
@@ -102,6 +106,45 @@ class QRCodeScanningLogicView: UIViewController,AVCaptureMetadataOutputObjectsDe
     @IBAction func btnBack(_ sender: UIButton) {
         
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    func validateQR(shopId : String)
+    {
+        let Spinner = MBProgressHUD.showAdded(to: self.view, animated: true)
+        let SacnQRParameters:Parameters = ["app_user_id": udefault.value(forKey: UserId) as! Int , "app_user_token" : udefault.value(forKey: UserToken) as! String , "shop_id" : shopId]
+        
+        Alamofire.request(SacnQRcodeAPI, method: .post, parameters: SacnQRParameters, encoding: URLEncoding.default, headers: nil).responseJSON(completionHandler: { (response) in
+            if(response.result.value != nil)
+            {
+                Spinner.hide(animated: true)
+                
+                print(JSON(response.result.value))
+                
+                let tempDict = JSON(response.result.value)
+                
+                if(tempDict["status_code"].intValue == 1)
+                {
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let claimVendorDetail = storyboard.instantiateViewController(withIdentifier: "claimVendorDetail") as! ClaimVendorDetail
+                    claimVendorDetail.CashBackDetails = tempDict["qr_code_details"]
+                    self.present(claimVendorDetail, animated: true, completion: nil)
+                }
+                else
+                {
+                    self.showAlert(title: "Message", message: tempDict["message"].stringValue)
+                }
+                
+            }
+            else
+            {
+                Spinner.hide(animated: true)
+                self.showAlert(title: "Alert", message: "Please Check Your Internet Connection")
+            }
+        })
+        
+        //let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        //let claimVendorDetail = storyboard.instantiateViewController(withIdentifier: "claimVendorDetail") as! ClaimVendorDetail
+        //self.present(claimVendorDetail, animated: true, completion: nil)
     }
     
     override func didReceiveMemoryWarning() {

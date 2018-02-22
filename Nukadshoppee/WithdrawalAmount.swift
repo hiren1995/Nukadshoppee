@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import Alamofire
+import MBProgressHUD
+import SwiftyJSON
 
 class WithdrawalAmount: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource {
     
@@ -19,14 +22,17 @@ class WithdrawalAmount: UIViewController,UICollectionViewDelegate,UICollectionVi
     @IBOutlet weak var lblTaxAmount: UILabel!
     @IBOutlet weak var lblGetAmount: UILabel!
     
-    let amountArray = [100,200,300,400]
-    var Amtflag = [0,0,0,0]
-    let tax = 10.0
-    let charge = 3.0
-    let other = 5.0
+    //let amountArray = [100,200,300,400]
+    //var Amtflag = [0,0,0,0]
+    //let tax = 10.0
+    //let charge = 3.0
+    //let other = 5.0
     
-   
-    var highlightcell:Int = -1
+    var amountArray:[Int] = [Int]()
+    let tax = TaxData["tax"].floatValue
+    let charge = TaxData["admin_charge"].floatValue
+    let other = TaxData["other_charge"].floatValue
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +40,9 @@ class WithdrawalAmount: UIViewController,UICollectionViewDelegate,UICollectionVi
         AmountCollectionView.dataSource = self
         AmountCollectionView.delegate = self
         AmountCollectionView.allowsMultipleSelection = false
+        
+        
+        loadData()
         
         // Do any additional setup after loading the view.
     }
@@ -82,10 +91,10 @@ class WithdrawalAmount: UIViewController,UICollectionViewDelegate,UICollectionVi
     func calculateAmount(index : Int)
     {
         let amount = amountArray[index]
-        let taxamount = Double(amount) * (tax/100.0)
-        let chargeamount = Double(amount) * (charge/100.0)
-        let otheramount = Double(amount) * (other/100.0)
-        let getamount =  Double(amount) - (taxamount + chargeamount + otheramount)
+        let taxamount = Float(amount) * (tax/100.0)
+        let chargeamount = Float(amount) * (charge/100.0)
+        let otheramount = Float(amount) * (other/100.0)
+        let getamount =  Float(amount) - (taxamount + chargeamount + otheramount)
         
         lblClaimedAmount2.text = String(amount)
         lblClaimedAmount.text = String(amount)
@@ -96,12 +105,61 @@ class WithdrawalAmount: UIViewController,UICollectionViewDelegate,UICollectionVi
     }
     
     @IBAction func btnDone(_ sender: UIButton) {
+        if(lblClaimedAmount.text == "")
+        {
+           self.showAlert(title: "Select Chip", message: "Please Select any one chip from the above")
+        }
+        else
+        {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let banksList = storyboard.instantiateViewController(withIdentifier: "banksList") as! BanksList
+            banksList.taxAmount = (lblTaxAmount.text?.floatValue)!
+            banksList.chargeAmount = (lblChargeAmount.text?.floatValue)!
+            banksList.otherAmount = (lblOtherAmount.text?.floatValue)!
+            banksList.payAmount = (lblGetAmount.text?.floatValue)!
+            banksList.requestAmount = (lblClaimedAmount.text?.floatValue)!
+            self.present(banksList, animated: true, completion: nil)
+        }
         
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let banksList = storyboard.instantiateViewController(withIdentifier: "banksList") as! BanksList
-        self.present(banksList, animated: true, completion: nil)
     }
     
+    func loadData()
+    {
+        let Spinner = MBProgressHUD.showAdded(to: self.view, animated: true)
+        let GetPossibleAmountParameters:Parameters = ["app_user_id": udefault.value(forKey: UserId) as! Int , "app_user_token" : udefault.value(forKey: UserToken) as! String ]
+        
+        Alamofire.request(PossibleAmountAPI, method: .post, parameters: GetPossibleAmountParameters, encoding: URLEncoding.default, headers: nil).responseJSON(completionHandler: { (response) in
+            if(response.result.value != nil)
+            {
+                Spinner.hide(animated: true)
+                
+                print(JSON(response.result.value))
+                
+                let tempDict = JSON(response.result.value)
+                
+                if(tempDict["status"] == "success")
+                {
+                   print(tempDict["possible_withdrawal"][0])
+                    
+                    for i in 0...tempDict["possible_withdrawal"].count-1
+                    {
+                        self.amountArray.append(tempDict["possible_withdrawal"][i].intValue)
+                    }
+                    self.AmountCollectionView.reloadData()
+                }
+                
+            }
+            else
+            {
+                Spinner.hide(animated: true)
+                self.showAlert(title: "Alert", message: "Please Check Your Internet Connection")
+            }
+        })
+    }
+    
+    @IBAction func btnBack(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

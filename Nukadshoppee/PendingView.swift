@@ -72,14 +72,12 @@ class PendingView: UIViewController,UITableViewDelegate,UITableViewDataSource {
          cell.lblAmtValue.text = amtVal[indexPath.row]
         */
         
-        if(DictTransaction["transaction_details"][indexPath.row]["claim_status"].intValue == 1)
-        {
+        
             cell.lblShopName.text = tempPending[indexPath.row]["shop_name"].stringValue
             cell.lblInoviceNum.text = "Invoice no: " + tempPending[indexPath.row]["claim_cash_back_ticket_no"].stringValue
             cell.lblAmount.text = "Amount: " + tempPending[indexPath.row]["claim_amount"].stringValue
             cell.lblExpires.text = "Expires on: " + StringToDateAndString(dateStr: tempPending[indexPath.row]["claim_cashback_validity"].stringValue)
             cell.lblAmtValue.text = tempPending[indexPath.row]["amount"].stringValue
-        }
         
         return cell
     }
@@ -104,6 +102,11 @@ class PendingView: UIViewController,UITableViewDelegate,UITableViewDataSource {
                 
                 if(DictTransaction["status"] == "success")
                 {
+                    self.count = 0
+                    self.tempPending = []
+                    self.pendingTable.reloadData()
+
+                    
                     for i in 0...DictTransaction["transaction_details"].count - 1
                     {
                         if(DictTransaction["transaction_details"][i]["claim_status"].intValue == 1)

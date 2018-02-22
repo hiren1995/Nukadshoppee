@@ -97,6 +97,45 @@ class OtpView: UIViewController{
         
     }
     
+    @IBAction func resendOTP(_ sender: UIButton) {
+        
+        let SendOTPParameters:Parameters = ["verification_contact_number": udefault.value(forKey: MobileNumber ) as! String , "verification_password" : udefault.value(forKey: SignUpPassword) as! String ]
+        
+        let Spinner = MBProgressHUD.showAdded(to: self.view, animated: true)
+        
+        Alamofire.request(SendOTPAPI, method: .post, parameters: SendOTPParameters, encoding: URLEncoding.default, headers: nil).responseJSON(completionHandler: { (response) in
+            if(response.result.value != nil)
+            {
+                Spinner.hide(animated: true)
+                
+                print(JSON(response.result.value))
+                
+                let tempDict = JSON(response.result.value!)
+                
+                if(tempDict["status"] == "success")
+                {
+                    
+                    if(tempDict["staus_code"].intValue == 1)
+                    {
+                        self.showAlert(title: "OTP Sent", message: "OTP has been sent Successfully")
+                    }
+                    
+                }
+                else if(tempDict["status"] == "failure")
+                {
+                    self.showAlert(title: "Alert", message: "Something went wrong while sending OTP")
+                }
+                
+            }
+            else
+            {
+                Spinner.hide(animated: true)
+                self.showAlert(title: "Alert", message: "Please Check Your Internet Connection")
+            }
+        })
+        
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

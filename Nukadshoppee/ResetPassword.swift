@@ -7,11 +7,16 @@
 //
 
 import UIKit
+import Alamofire
+import MBProgressHUD
+import SwiftyJSON
 
 class ResetPassword: UIViewController {
 
     @IBOutlet weak var txtNewPassword: UITextField!
     @IBOutlet weak var txtConfirmNewPassword: UITextField!
+    
+    var forgetPasswordNumber = String()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,9 +44,37 @@ class ResetPassword: UIViewController {
             }
             else
             {
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let signIn = storyboard.instantiateViewController(withIdentifier: "signIn") as! SignIn
-                self.present(signIn, animated: true, completion: nil)
+                let Spinner = MBProgressHUD.showAdded(to: self.view, animated: true)
+                let ResetPasswordParameters:Parameters = ["mobile_or_email":forgetPasswordNumber , "new_pwd":txtNewPassword.text!]
+                
+                Alamofire.request(ChangePasswordAPI, method: .post, parameters: ResetPasswordParameters, encoding: URLEncoding.default, headers: nil).responseJSON(completionHandler: { (response) in
+                    if(response.result.value != nil)
+                    {
+                        Spinner.hide(animated: true)
+                        
+                        print(JSON(response.result.value))
+                        
+                        let tempDict = JSON(response.result.value)
+                        
+                        if(tempDict["status"] == "success")
+                        {
+                            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                            let signIn = storyboard.instantiateViewController(withIdentifier: "signIn") as! SignIn
+                            self.present(signIn, animated: true, completion: nil)
+                            
+                        }
+                        
+                    }
+                    else
+                    {
+                        Spinner.hide(animated: true)
+                        self.showAlert(title: "Alert", message: "Please Check Your Internet Connection")
+                    }
+                })
+                
+                //let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                //let signIn = storyboard.instantiateViewController(withIdentifier: "signIn") as! SignIn
+                //self.present(signIn, animated: true, completion: nil)
             }
         }
         

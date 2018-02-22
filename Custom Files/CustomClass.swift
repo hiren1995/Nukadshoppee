@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import SwiftyJSON
 
 
 extension UIViewController{
@@ -112,6 +113,42 @@ extension UIApplication {
     }
 }
 
+extension String {
+    var htmlToAttributedString: NSAttributedString? {
+        guard let data = data(using: .utf8) else { return NSAttributedString() }
+        do {
+            return try NSAttributedString(data: data, options: [NSAttributedString.DocumentReadingOptionKey.documentType:  NSAttributedString.DocumentType.html], documentAttributes: nil)
+        } catch {
+            return NSAttributedString()
+        }
+    }
+    var htmlToString: String {
+        return htmlToAttributedString?.string ?? ""
+    }
+    
+    var floatValue: Float {
+        return (self as NSString).floatValue
+    }
+    
+}
+
+extension JSON{
+    mutating func appendIfArray(json:JSON){
+        if var arr = self.array{
+            arr.append(json)
+            self = JSON(arr);
+        }
+    }
+    
+    mutating func appendIfDictionary(key:String,json:JSON){
+        if var dict = self.dictionary{
+            dict[key] = json;
+            self = JSON(dict);
+        }
+    }
+}
+
+
 /*
 extension UICollectionView {
     func deselectAllItems(animated animated: Bool = false) {
@@ -150,3 +187,36 @@ func StringToDateAndString(dateStr:String) -> String
     return normalDateFormatter.string(from: temp)
 }
 
+
+
+func convertToDictionary(text: String) -> [String: Any]? {
+    if let data = text.data(using: .utf8) {
+        do {
+            return try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+    return nil
+}
+
+func getDayOfWeek(today:Date)->Int? {
+    
+        let myCalendar = NSCalendar(calendarIdentifier: NSCalendar.Identifier.gregorian)!
+        let myComponents = myCalendar.components(.weekday, from: today)
+        let weekDay = myComponents.weekday
+        return weekDay
+    
+}
+
+func timeFormatter(date:String)->String
+{
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "HH:mm"
+    let date1 = dateFormatter.date(from: date)
+    
+    let dateformatter2 = DateFormatter()
+    dateformatter2.dateFormat = "HH:mm a"
+    
+    return dateformatter2.string(from: date1!)
+}

@@ -32,7 +32,11 @@ class Wallet: UIViewController {
     }
     @IBAction func btnBack(_ sender: UIButton) {
         
-        self.dismiss(animated: true, completion: nil)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let dashboard = storyboard.instantiateViewController(withIdentifier: "dashboard") as! Dashboard
+        self.present(dashboard, animated: true, completion: nil)
+        
+        //self.dismiss(animated: true, completion: nil)
     }
     @IBAction func btnTransactions(_ sender: UIButton) {
         
