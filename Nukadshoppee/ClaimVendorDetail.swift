@@ -189,6 +189,9 @@ class ClaimVendorDetail: UIViewController,UIImagePickerControllerDelegate,UINavi
                                 let claimStatus = storyboard.instantiateViewController(withIdentifier: "claimStatus") as! ClaimStatus
                                 claimStatus.ClaimStatusDetails = tempDict
                                 claimStatus.shopID = self.CashBackDetails["shop_id"].intValue
+                                //claimStatus.lblShopName.text = self.CashBackDetails["shop_name"].stringValue
+                                
+                                claimStatus.shopName = self.CashBackDetails["shop_name"].stringValue
                                 self.present(claimStatus, animated: true, completion: nil)
                                 
                             }

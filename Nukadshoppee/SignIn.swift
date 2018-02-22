@@ -108,11 +108,13 @@ class SignIn: UIViewController,UITextFieldDelegate {
                     Spinner.hide(animated: true)
                     
                     udefault.set(true, forKey: isLogin)
+                    udefault.set(true, forKey: isEmailVerified)
                     udefault.set(self.txtMobileNumber.text!, forKey: LoginMobile)
                     udefault.set(self.txtPassword.text!, forKey: LoginPassword)
                 
                     UserData = tempDict["user_info"][0]
                     TaxData = tempDict["tax_info"][0]
+                    
                     udefault.set(UserData["app_user_token"].stringValue, forKey: UserToken)
                     udefault.set(UserData["app_user_id"].intValue, forKey: UserId)
                     
@@ -208,8 +210,34 @@ class SignIn: UIViewController,UITextFieldDelegate {
                 }
                 else if(tempDict["status_code"].intValue == 3)
                 {
+                    
                     Spinner.hide(animated: true)
-                    self.showAlert(title: "Verify Email", message: "You are registered User but Your Email is not Verified Please Verify that first")
+                    
+                    udefault.set(true, forKey: isLogin)
+                    udefault.set(false, forKey: isEmailVerified)
+                    udefault.set(self.txtMobileNumber.text!, forKey: LoginMobile)
+                    udefault.set(self.txtPassword.text!, forKey: LoginPassword)
+                    
+                    UserData = tempDict["user_data"][0]
+                    TaxData = tempDict["tax_info"][0]
+                    udefault.set(UserData["app_user_token"].stringValue, forKey: UserToken)
+                    udefault.set(UserData["app_user_id"].intValue, forKey: UserId)
+                    
+                    udefault.set(UserData["state_id"].intValue, forKey: StateId)
+                    udefault.set(UserData["state_name"].stringValue, forKey: StateName)
+                    
+                    udefault.set(UserData["app_user_city"].intValue, forKey: CityId)
+                    udefault.set(UserData["city_name"].stringValue, forKey: CityName)
+                    
+                    udefault.set(UserData["app_user_religion"].intValue, forKey: ReligionID)
+                    udefault.set(UserData["religion_name"].stringValue, forKey: ReligionName)
+                    
+                    
+                    let dashboard = storyboard.instantiateViewController(withIdentifier: "dashboard") as! Dashboard
+                    self.present(dashboard, animated: true, completion: nil)
+                    
+                    
+                    //self.showAlert(title: "Verify Email", message: "You are registered User but Your Email is not Verified Please Verify that first")
                     
                 }
                 else

@@ -13,6 +13,7 @@ class RejectedCell: UITableViewCell {
     @IBOutlet weak var lblShopName: UILabel!
     @IBOutlet weak var lblClaimed: UILabel!
     @IBOutlet weak var lblAmtValue: UILabel!
+    @IBOutlet weak var lblRejectedStatus: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

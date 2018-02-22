@@ -29,6 +29,7 @@ class ClaimStatus: UIViewController {
     
     var ClaimStatusDetails = JSON()
     var shopID = Int()
+    var shopName = String()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -98,6 +99,7 @@ class ClaimStatus: UIViewController {
         
         ratingView.isHidden = false
         
+        lblShopName.text = shopName
         
         let rupee = "\u{20B9}"
         

@@ -73,10 +73,20 @@ class ApprovedView: UIViewController ,UITableViewDelegate,UITableViewDataSource{
         cell.lblAmtValue.text = amtVal[indexPath.row]
         */
         
+        if(tempApproved[indexPath.row]["transaction_type"].intValue == 3)
+        {
+            cell.lblShopName.text = "Refferal Bonus"
+            cell.lblInoviceNum.isHidden = true
+            cell.lblAmount.isHidden = true
+            
+        }
+        else
+        {
+            cell.lblShopName.text = tempApproved[indexPath.row]["shop_name"].stringValue
+            cell.lblInoviceNum.text = "Inovice no: " + tempApproved[indexPath.row]["claim_cash_back_ticket_no"].stringValue
+            cell.lblAmount.text = "Amount:" + tempApproved[indexPath.row]["claim_amount"].stringValue
+        }
         
-        cell.lblShopName.text = tempApproved[indexPath.row]["shop_name"].stringValue
-        cell.lblInoviceNum.text = "Inovice no: " + tempApproved[indexPath.row]["claim_cash_back_ticket_no"].stringValue
-        cell.lblAmount.text = "Amount:" + tempApproved[indexPath.row]["claim_amount"].stringValue
         cell.lblExpires.text = "Expires on: " + StringToDateAndString(dateStr: tempApproved[indexPath.row]["claim_cashback_validity"].stringValue)
         cell.lblAmtValue.text = tempApproved[indexPath.row]["amount"].stringValue
         

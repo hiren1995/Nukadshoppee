@@ -30,9 +30,71 @@ class ScanQR: UIViewController {
 
     @IBAction func btnScanQR(_ sender: UIButton) {
         
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let qrCodeScanningLogicView = storyboard.instantiateViewController(withIdentifier: "qrCodeScanningLogicView") as! QRCodeScanningLogicView
-        self.present(qrCodeScanningLogicView, animated: true, completion: nil)
+        let verified = UserDefaults.standard.bool(forKey: isEmailVerified)
+        
+        if verified
+        {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let qrCodeScanningLogicView = storyboard.instantiateViewController(withIdentifier: "qrCodeScanningLogicView") as! QRCodeScanningLogicView
+            self.present(qrCodeScanningLogicView, animated: true, completion: nil)
+        }
+        else
+        {
+            
+            let vrifyEmailAlert = UIAlertController(title: "Verify Email", message: "You are registered User but Your Email is not Verified Please Verify that first and Login again.", preferredStyle: UIAlertControllerStyle.alert)
+            
+            vrifyEmailAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
+                
+                if (UserData["app_user_email"].stringValue != "")
+                {
+                    let resendEmailParameters:Parameters = ["app_user_id": udefault.value(forKey: UserId) as! Int , "app_user_email" : UserData["app_user_email"].stringValue , "app_user_contact_number" : UserData["app_user_contact_number"].stringValue]
+                    
+                    
+                    let Spinner = MBProgressHUD.showAdded(to: self.view, animated: true)
+                    
+                    Alamofire.request(ResendEmailAPI, method: .post, parameters: resendEmailParameters, encoding: URLEncoding.default, headers: nil).responseJSON(completionHandler: { (response) in
+                        if(response.result.value != nil)
+                        {
+                            Spinner.hide(animated: true)
+                            
+                            print(JSON(response.result.value))
+                            
+                            let tempDict = JSON(response.result.value!)
+                            
+                            if(tempDict["status"] == "success")
+                            {
+                                self.showAlert(title: "Alert", message: "Email Verification mail sent Successfully")
+                            }
+                                
+                            else
+                            {
+                                
+                                self.showAlert(title: "Alert", message: "Something went wrong while sending Mail")
+                                
+                            }
+                            
+                        }
+                        else
+                        {
+                            Spinner.hide(animated: true)
+                            self.showAlert(title: "Alert", message: "Please Check Your Internet Connection")
+                        }
+                    })
+                }
+                
+                
+            }))
+            
+            vrifyEmailAlert.addAction(UIAlertAction(title: "NO", style: .cancel, handler: { (action: UIAlertAction!) in
+                
+                print("Verification Cancelled")
+                
+            }))
+            
+            present(vrifyEmailAlert, animated: true, completion: nil)
+            
+        }
+        
     }
     
     @IBAction func btnWallet(_ sender: UIButton) {

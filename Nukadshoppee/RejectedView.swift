@@ -73,6 +73,15 @@ class RejectedView: UIViewController,UITableViewDelegate,UITableViewDataSource {
             cell.lblClaimed.text = "Claimed on :" + StringToDateAndString(dateStr: tempRejected[indexPath.row]["claim_cashback_validity"].stringValue)
             cell.lblAmtValue.text = tempRejected[indexPath.row]["amount"].stringValue
         
+            if(DictTransaction["transaction_details"][indexPath.row]["claim_status"].intValue == 3)
+            {
+                cell.lblRejectedStatus.text = "Rejected"
+            }
+            else
+            {
+                cell.lblRejectedStatus.text = "Expired"
+            }
+        
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

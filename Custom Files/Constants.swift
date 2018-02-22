@@ -42,6 +42,7 @@ let ForgetPasswordSendOTPAPI = "\(BaseURL)/user/forgot_password"
 let ForgetPasswordVerifyOTPAPI = "\(BaseURL)/user/forgot_password_verify"
 let ChangePasswordAPI = "\(BaseURL)/user/change_password"
 let AddReligionAPI = "\(BaseURL)/user/add_religion"
+let ResendEmailAPI = "\(BaseURL)/user/resend_email"
 
 //Strings for user defaults
 
@@ -63,6 +64,6 @@ var ReligionName = "ReligionName"
 var ReligionID = "ReligionID"
 var LoginMobile = "LoginMobile"
 var LoginPassword = "LoginPassword"
-
+var isEmailVerified = "isEmailVerified"
 
 

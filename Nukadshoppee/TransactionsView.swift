@@ -49,7 +49,7 @@ class TransactionsView: UIViewController {
         controllerArray.append(approvedView)
         
         let rejectedView : UIViewController = storyboard.instantiateViewController(withIdentifier: "rejectedView") as! RejectedView
-        rejectedView.title = "Rejected"
+        rejectedView.title = "Charge-Back"
         controllerArray.append(rejectedView)
         
         let withdrawalView : UIViewController = storyboard.instantiateViewController(withIdentifier: "withdrawalView") as! WithdrawalView

@@ -176,6 +176,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                     {
                         
                         udefault.set(true, forKey: isLogin)
+                        udefault.set(true, forKey: isEmailVerified)
                         UserData = tempDict["user_info"][0]
                         TaxData = tempDict["tax_info"][0]
                         
@@ -193,6 +194,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                         
                         //print(UserData)
                         //print(TaxData)
+                        
+                    }
+                    else if(tempDict["status_code"].intValue == 3)
+                    {
+                        udefault.set(true, forKey: isLogin)
+                        udefault.set(false, forKey: isEmailVerified)
+                        
+                        
+                        UserData = tempDict["user_data"][0]
+                        TaxData = tempDict["tax_info"][0]
+                        
+                        udefault.set(UserData["app_user_token"].stringValue, forKey: UserToken)
+                        udefault.set(UserData["app_user_id"].intValue, forKey: UserId)
+                        
+                        udefault.set(UserData["state_id"].intValue, forKey: StateId)
+                        udefault.set(UserData["state_name"].stringValue, forKey: StateName)
+                        
+                        udefault.set(UserData["app_user_city"].intValue, forKey: CityId)
+                        udefault.set(UserData["city_name"].stringValue, forKey: CityName)
+                        
+                        udefault.set(UserData["app_user_religion"].intValue, forKey: ReligionID)
+                        udefault.set(UserData["religion_name"].stringValue, forKey: ReligionName)
+                        
                         
                     }
                     else

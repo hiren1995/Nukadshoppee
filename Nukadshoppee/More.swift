@@ -109,6 +109,7 @@ class More: UIViewController,UITableViewDelegate,UITableViewDataSource {
                 udefault.removeObject(forKey: ReligionID)
                 udefault.removeObject(forKey: LoginMobile)
                 udefault.removeObject(forKey: LoginPassword)
+                udefault.removeObject(forKey: isEmailVerified)
                 
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 let signIn = storyboard.instantiateViewController(withIdentifier: "signIn") as! SignIn
