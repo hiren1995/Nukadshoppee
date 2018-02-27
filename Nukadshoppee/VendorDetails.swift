@@ -140,6 +140,8 @@ class VendorDetails: UIViewController,UIScrollViewDelegate {
         {
             let imgView = UIImageView(frame: CGRect(x: self.ImgScrollView.frame.width * CGFloat(i), y: 0, width: self.ImgScrollView.frame.width, height: self.ImgScrollView.frame.height))
             
+            imgView.image = UIImage(named: "bg_offers")
+            
             KingfisherManager.shared.downloader.downloadImage(with: NSURL(string: self.tempDict["banner_list"][i]["shop_banner_images"].stringValue)! as URL, retrieveImageTask: RetrieveImageTask.empty, options: [], progressBlock: nil, completionHandler: { (image,error, imageURL, imageData) in
                 
                 imgView.image = image

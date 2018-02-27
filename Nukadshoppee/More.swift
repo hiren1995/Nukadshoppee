@@ -27,9 +27,12 @@ class More: UIViewController,UITableViewDelegate,UITableViewDataSource {
         moreTableView.delegate = self
         moreTableView.dataSource = self
         
-        loadData()
+        
         
         // Do any additional setup after loading the view.
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        loadData()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -43,6 +46,8 @@ class More: UIViewController,UITableViewDelegate,UITableViewDataSource {
         cell.lblName.text = values[indexPath.row]
         
         cell.imgView.image = UIImage(named: imgArray[indexPath.row])
+        
+        cell.selectionStyle = UITableViewCellSelectionStyle.none
         
         return cell
         
@@ -134,6 +139,13 @@ class More: UIViewController,UITableViewDelegate,UITableViewDataSource {
         return 76
     }
 
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 0
+    }
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 0
+    }
+    
     @IBAction func btnUpdate2(_ sender: UIButton) {
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -155,7 +167,15 @@ class More: UIViewController,UITableViewDelegate,UITableViewDataSource {
         lblUserMailId.text = UserData["app_user_email"].stringValue
         lblUserNumber.text = UserData["app_user_contact_number"].stringValue
         
-        
+        if(UserData["app_user_profilepic"].stringValue != "")
+        {
+            KingfisherManager.shared.downloader.downloadImage(with: NSURL(string: UserData["app_user_profilepic"].stringValue)! as URL, retrieveImageTask: RetrieveImageTask.empty, options: [], progressBlock: nil, completionHandler: { (image,error, imageURL, imageData) in
+                
+                
+                self.imgProfilePic.image = image
+                
+            })
+        }
        
     }
     

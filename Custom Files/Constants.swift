@@ -13,7 +13,10 @@ import UIKit
 var udefault = UserDefaults.standard
 
 //URL
+
 let BaseURL = "https://bulale.in/nukadshoppee/index.php/api/"
+
+//let BaseURL = "http://nukadshoppee.com/index.php/api/"
 
 //API
 let LoginAPI = "\(BaseURL)/user/login"

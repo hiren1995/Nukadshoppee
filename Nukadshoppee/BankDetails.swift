@@ -22,6 +22,7 @@ class BankDetails: UIViewController {
     @IBOutlet weak var txtName: UITextField!
     @IBOutlet weak var txtAccountNumber: UITextField!
     @IBOutlet weak var txtIFSC: UITextField!
+    @IBOutlet weak var headerTitle: UILabel!
     
     var EditBankDetailsFlag:Int = 0
     var bankDetails = JSON()
@@ -38,6 +39,7 @@ class BankDetails: UIViewController {
         
         if(EditBankDetailsFlag == 1)
         {
+            headerTitle.text = "Edit Bank"
             loadBankDetails()
         }
         

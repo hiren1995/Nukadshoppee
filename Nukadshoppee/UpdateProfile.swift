@@ -606,7 +606,7 @@ class UpdateProfile: UIViewController,UIPickerViewDelegate,UIPickerViewDataSourc
         }
         else
         {
-            let imgData = UIImageJPEGRepresentation(imgProfilePic.image!, 0.3)
+            let imgData = UIImageJPEGRepresentation(imgProfilePic.image!, 0.1)
             
             var dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "dd MMM yyyy"

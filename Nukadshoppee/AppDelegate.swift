@@ -67,6 +67,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             
         }
         connectToFcm()
+        
     }
     
     func connectToFcm() {
@@ -84,6 +85,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     {
         print("Firebase registration token: \(fcmToken)")
         
+        udefault.set(fcmToken, forKey: DeviceToken)
+        udefault.set("123456", forKey: DeviceId)
     }
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any])

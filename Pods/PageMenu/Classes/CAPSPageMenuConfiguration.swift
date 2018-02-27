@@ -12,14 +12,14 @@ public class CAPSPageMenuConfiguration {
     open var menuHeight : CGFloat = 50.0
     open var menuMargin : CGFloat = 15.0
     open var menuItemWidth : CGFloat = 111.0
-    open var selectionIndicatorHeight : CGFloat = 5.0
+    open var selectionIndicatorHeight : CGFloat = 2.0
     open var scrollAnimationDurationOnMenuItemTap : Int = 500 // Millisecons
     open var selectionIndicatorColor : UIColor = UIColor(red: 34/255, green: 48/255, blue: 144/255, alpha: 1.0)
     open var selectedMenuItemLabelColor : UIColor = UIColor(red: 34/255, green: 48/255, blue: 144/255, alpha: 1.0)
     open var unselectedMenuItemLabelColor : UIColor = UIColor(red: 34/255, green: 48/255, blue: 144/255, alpha: 1.0)
     open var scrollMenuBackgroundColor : UIColor = UIColor.white
     open var viewBackgroundColor : UIColor = UIColor.white
-    open var bottomMenuHairlineColor : UIColor = UIColor.white
+    open var bottomMenuHairlineColor : UIColor = UIColor.gray
     open var menuItemSeparatorColor : UIColor = UIColor.white
     
     open var menuItemFont : UIFont = UIFont.systemFont(ofSize: 15.0)
@@ -31,8 +31,8 @@ public class CAPSPageMenuConfiguration {
     open var menuItemWidthBasedOnTitleTextWidth : Bool = false
     open var titleTextSizeBasedOnMenuItemWidth : Bool = false
     open var useMenuLikeSegmentedControl : Bool = false
-    open var centerMenuItems : Bool = false
-    open var enableHorizontalBounce : Bool = true
+    open var centerMenuItems : Bool = true
+    open var enableHorizontalBounce : Bool = false
     open var hideTopMenuBar : Bool = false
     
     public init() {

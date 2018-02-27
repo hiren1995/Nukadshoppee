@@ -60,7 +60,24 @@ class BanksList: UIViewController,UITableViewDelegate,UITableViewDataSource {
         cell.cellView.addBorderShadow()
         cell.lblName.text = tempDict["bank_list"][indexPath.row]["bank_app_user_name"].stringValue
         cell.lblBankName.text = tempDict["bank_list"][indexPath.row]["bank_name"].stringValue
-        cell.lblAccountNumber.text = tempDict["bank_list"][indexPath.row]["bank_acc_no"].stringValue
+        
+        cell.selectionStyle = UITableViewCellSelectionStyle.none
+        
+        //cell.lblAccountNumber.text = tempDict["bank_list"][indexPath.row]["bank_acc_no"].stringValue
+        
+        var x = tempDict["bank_list"][indexPath.row]["bank_acc_no"].stringValue
+        let m = x.suffix(4)
+        let r = x.dropLast(4)
+        //print(r)
+        
+        let start = r.startIndex;
+        let end = r.index(r.startIndex, offsetBy: r.count);
+        let result = r.replacingCharacters(in: start..<end, with: String(repeatElement("X", count: r.count)))
+        // The result.
+        //print(result)
+        //print(result + m)
+       
+        cell.lblAccountNumber.text = result + m
         
         cell.btnDelete.tag = indexPath.row
         
